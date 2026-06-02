@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "name": "Bikash Maharjan",
+    "role": "CEO",
+    "company": "TechVenture Nepal",
+    "content": "Lexis & Legis guided us through our Series A funding round with exceptional attention to detail. Their corporate team understood both Nepalese law and international investor requirements.",
+    "rating": 5,
+    "featured": true
+  },
+  {
+    "id": "2",
+    "name": "Sarah Mitchell",
+    "role": "Director",
+    "company": "Himalaya Exports Ltd.",
+    "content": "We resolved a complex contract dispute favorably thanks to their litigation team's strategic approach. Professional, transparent, and results-driven throughout.",
+    "rating": 5,
+    "featured": true
+  },
+  {
+    "id": "3",
+    "name": "Dr. Anjali Gurung",
+    "role": "Founder",
+    "company": "MedInnovate",
+    "content": "Their IP team secured our trademark and patent protections efficiently. Highly recommend for any business protecting intellectual property in Nepal.",
+    "rating": 5,
+    "featured": true
+  }
+]

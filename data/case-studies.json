@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "title": "Corporate Restructuring",
+    "category": "Corporate Law",
+    "summary": "Successfully advised a growing manufacturing company on regulatory compliance and business restructuring during rapid expansion.",
+    "outcome": "Completed restructuring within 90 days, achieving full regulatory compliance and enabling a successful merger.",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "Contract Dispute Resolution",
+    "category": "Litigation",
+    "summary": "Represented a technology company in a high-stakes commercial contract dispute with a former vendor.",
+    "outcome": "Achieved favorable settlement while minimizing litigation costs by 60% compared to projected trial expenses.",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "title": "Foreign Investment Compliance",
+    "category": "Tax & Compliance",
+    "summary": "Advised an international hospitality group on FITTA compliance for their Nepal market entry.",
+    "outcome": "Secured all regulatory approvals and established compliant operations within six months.",
+    "featured": true
+  }
+]

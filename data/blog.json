@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "slug": "company-registration-nepal",
+    "title": "Company Registration in Nepal: A Complete Guide",
+    "excerpt": "Step-by-step guide to registering your company in Nepal, including required documents, fees, and timelines.",
+    "content": "Registering a company in Nepal involves several key steps under the Companies Act. First, reserve your company name with the Office of the Company Registrar (OCR). Prepare your memorandum and articles of association, obtain PAN registration, and register for VAT if applicable.\n\nForeign investors should also comply with the Foreign Investment and Technology Transfer Act (FITTA). Our team at Lexis & Legis guides businesses through every stage—from name reservation to post-incorporation compliance.",
+    "category": "Corporate Law",
+    "author": "Adv. Rajesh Sharma",
+    "publishedAt": "2025-05-15",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "slug": "trademark-registration-nepal",
+    "title": "Trademark Registration Process in Nepal",
+    "excerpt": "Protect your brand with trademark registration under Nepal's Patent, Design and Trademark Act.",
+    "content": "Trademark registration in Nepal is administered by the Department of Industry. The process includes application filing, examination, publication in the Industrial Property Bulletin, and registration upon no opposition.\n\nA registered trademark provides exclusive rights for ten years, renewable indefinitely. Lexis & Legis assists with trademark searches, application preparation, and enforcement against infringement.",
+    "category": "Intellectual Property",
+    "author": "Adv. Priya Thapa",
+    "publishedAt": "2025-05-08",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "slug": "startup-legal-compliance-guide",
+    "title": "Startup Legal Compliance Guide for Nepal",
+    "excerpt": "Essential legal requirements every startup founder in Nepal must know before launching.",
+    "content": "Startups in Nepal must navigate company registration, tax compliance, employment law, and data protection requirements. Founders should establish clear founder agreements, protect intellectual property early, and understand foreign investment rules if seeking international capital.\n\nLexis & Legis offers startup packages covering incorporation, contract templates, and ongoing compliance support.",
+    "category": "Startup Advisory",
+    "author": "Adv. Sunita Rai",
+    "publishedAt": "2025-04-22",
+    "featured": false
+  },
+  {
+    "id": "4",
+    "slug": "arbitration-vs-litigation",
+    "title": "Arbitration vs Litigation: Which Is Right for Your Dispute?",
+    "excerpt": "Compare arbitration and litigation to choose the most effective dispute resolution method.",
+    "content": "Arbitration offers confidentiality, flexibility, and typically faster resolution than court litigation. Litigation may be preferable when injunctive relief is needed or when enforcing rights against uncooperative parties.\n\nNepal recognizes both domestic arbitration under the Arbitration Act and international awards under the New York Convention. Our dispute resolution team advises on the optimal strategy for each case.",
+    "category": "Litigation",
+    "author": "Adv. Rajesh Sharma",
+    "publishedAt": "2025-04-10",
+    "featured": false
+  }
+]
