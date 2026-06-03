@@ -1,13 +1,32 @@
 "use client";
 
 import { useState } from "react";
+import { PRACTICE_AREAS } from "@/lib/constants";
 
 interface ContactFormProps {
   source?: string;
   compact?: boolean;
+  /** Full contact page form — matches lexislegis.com fields */
+  full?: boolean;
+  darkLabels?: boolean;
 }
 
-export default function ContactForm({ source = "contact", compact = false }: ContactFormProps) {
+const inputClass = (dark: boolean) =>
+  `w-full rounded-lg border px-4 py-3 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 ${
+    dark
+      ? "border-gray-200 bg-white text-dark-text focus:border-primary"
+      : "border-gray-200 bg-white text-dark-text focus:border-primary"
+  }`;
+
+const labelClass = (dark: boolean) =>
+  `mb-1.5 block text-sm font-medium ${dark ? "text-navy" : "text-dark-text"}`;
+
+export default function ContactForm({
+  source = "contact",
+  compact = false,
+  full = false,
+  darkLabels = false,
+}: ContactFormProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -15,6 +34,12 @@ export default function ContactForm({ source = "contact", compact = false }: Con
     setStatus("loading");
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    const subject = data.get("subject") as string | null;
+    const address = data.get("address") as string | null;
+    const legalMatter = (data.get("legalMatter") as string) || subject || "General Inquiry";
+    let message = (data.get("message") as string) || "";
+    if (address) message = `Address: ${address}\n\n${message}`.trim();
 
     try {
       const res = await fetch("/api/inquiries", {
@@ -24,8 +49,10 @@ export default function ContactForm({ source = "contact", compact = false }: Con
           name: data.get("name"),
           phone: data.get("phone"),
           email: data.get("email"),
-          legalMatter: data.get("legalMatter"),
-          message: data.get("message") || "",
+          legalMatter,
+          message,
+          subject: subject || undefined,
+          address: address || undefined,
           source,
         }),
       });
@@ -38,22 +65,22 @@ export default function ContactForm({ source = "contact", compact = false }: Con
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className={compact ? "space-y-4" : "grid gap-4 sm:grid-cols-2"}>
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className={compact || full ? "space-y-5" : "grid gap-4 sm:grid-cols-2"}>
         <div>
-          <label htmlFor="name" className="mb-1 block text-sm font-medium text-dark-text">
-            Full Name *
+          <label htmlFor="name" className={labelClass(darkLabels)}>
+            Name *
           </label>
           <input
             id="name"
             name="name"
             required
-            className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-            placeholder="Your name"
+            className={inputClass(darkLabels)}
+            placeholder="Your full name"
           />
         </div>
         <div>
-          <label htmlFor="phone" className="mb-1 block text-sm font-medium text-dark-text">
+          <label htmlFor="phone" className={labelClass(darkLabels)}>
             Phone *
           </label>
           <input
@@ -61,71 +88,109 @@ export default function ContactForm({ source = "contact", compact = false }: Con
             name="phone"
             type="tel"
             required
-            className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-            placeholder="+977 ..."
+            className={inputClass(darkLabels)}
+            placeholder="+977 15922904"
           />
         </div>
       </div>
-      <div>
-        <label htmlFor="email" className="mb-1 block text-sm font-medium text-dark-text">
-          Email *
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-          placeholder="you@email.com"
-        />
+
+      <div className={full ? "grid gap-5 sm:grid-cols-2" : ""}>
+        <div>
+          <label htmlFor="email" className={labelClass(darkLabels)}>
+            Email *
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className={inputClass(darkLabels)}
+            placeholder="you@email.com"
+          />
+        </div>
+        {full && (
+          <div>
+            <label htmlFor="address" className={labelClass(darkLabels)}>
+              Address
+            </label>
+            <input
+              id="address"
+              name="address"
+              className={inputClass(darkLabels)}
+              placeholder="City, Country"
+            />
+          </div>
+        )}
       </div>
-      <div>
-        <label htmlFor="legalMatter" className="mb-1 block text-sm font-medium text-dark-text">
-          Legal Matter *
-        </label>
-        <select
-          id="legalMatter"
-          name="legalMatter"
-          required
-          className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-        >
-          <option value="">Select practice area</option>
-          <option value="Corporate Law">Corporate Law</option>
-          <option value="Litigation">Litigation</option>
-          <option value="Intellectual Property">Intellectual Property</option>
-          <option value="Contract Drafting">Contract Drafting</option>
-          <option value="Startup Advisory">Startup Advisory</option>
-          <option value="Tax & Compliance">Tax & Compliance</option>
-          <option value="Real Estate">Real Estate</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
+
+      {full ? (
+        <div>
+          <label htmlFor="subject" className={labelClass(darkLabels)}>
+            Subject *
+          </label>
+          <input
+            id="subject"
+            name="subject"
+            required
+            className={inputClass(darkLabels)}
+            placeholder="Brief subject of your inquiry"
+          />
+        </div>
+      ) : (
+        <div>
+          <label htmlFor="legalMatter" className={labelClass(darkLabels)}>
+            Legal Matter *
+          </label>
+          <select
+            id="legalMatter"
+            name="legalMatter"
+            required
+            className={inputClass(darkLabels)}
+          >
+            <option value="">Select practice area</option>
+            {PRACTICE_AREAS.map((area) => (
+              <option key={area.slug} value={area.navLabel ?? area.title}>
+                {area.navLabel ?? area.title}
+              </option>
+            ))}
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      )}
+
       {!compact && (
         <div>
-          <label htmlFor="message" className="mb-1 block text-sm font-medium text-dark-text">
-            Message
+          <label htmlFor="message" className={labelClass(darkLabels)}>
+            Message {full ? "*" : ""}
           </label>
           <textarea
             id="message"
             name="message"
-            rows={4}
-            className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-            placeholder="Briefly describe your legal matter..."
+            required={full}
+            rows={full ? 5 : 4}
+            className={inputClass(darkLabels)}
+            placeholder="Describe your legal matter or question..."
           />
         </div>
       )}
+
       <button
         type="submit"
         disabled={status === "loading"}
-        className="btn-primary w-full disabled:opacity-60 sm:w-auto"
+        className={`${full ? "btn-gold w-full py-3.5 text-base" : "btn-primary w-full sm:w-auto"} disabled:opacity-60`}
       >
-        {status === "loading" ? "Sending..." : "Submit Inquiry"}
+        {status === "loading" ? "Sending..." : full ? "Send Message" : "Submit Inquiry"}
       </button>
+
       {status === "success" && (
-        <p className="text-sm text-green-600">Thank you! We will contact you shortly.</p>
+        <p className="rounded-lg bg-green-50 px-4 py-3 text-sm text-green-700">
+          Thank you! Our team will contact you shortly. Your details are kept confidential.
+        </p>
       )}
       {status === "error" && (
-        <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
+        <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+          Something went wrong. Please call us directly or try again.
+        </p>
       )}
     </form>
   );

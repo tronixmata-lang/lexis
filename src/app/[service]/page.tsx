@@ -33,9 +33,13 @@ export default async function ServicePage({
   return (
     <ServicePageLayout
       title={page.title}
+      navLabel={page.navLabel}
       subtitle={page.subtitle}
       description={page.description}
       services={page.services}
+      body={page.body}
+      subsections={page.subsections}
+      faq={page.faq}
       slug={service}
     />
   );

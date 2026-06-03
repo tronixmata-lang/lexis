@@ -7,6 +7,7 @@ export interface BlogPost {
   category: string;
   author: string;
   publishedAt: string;
+  image?: string;
   featured?: boolean;
 }
 

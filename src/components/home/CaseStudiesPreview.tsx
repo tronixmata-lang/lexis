@@ -8,8 +8,8 @@ export default function CaseStudiesPreview({ studies }: { studies: CaseStudy[] }
     <section className="section-padding bg-light-gray">
       <div className="container-narrow">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-gold">Proven Results</p>
-          <h2 className="mt-2 text-3xl font-bold text-navy sm:text-4xl">Case Studies</h2>
+          <p className="text-sm font-semibold uppercase tracking-widest text-gold">Our Specialization</p>
+          <h2 className="mt-2 text-3xl font-bold text-navy sm:text-4xl">Areas of Expertise</h2>
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">

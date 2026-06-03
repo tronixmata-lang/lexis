@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/data";
+import { LEGAL_DISCLAIMER } from "@/lib/constants";
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -54,9 +55,12 @@ export default async function BlogPostPage({
               <p key={i}>{para}</p>
             ))}
           </div>
-          <div className="mt-12 border-t border-gray-100 pt-8">
+          <p className="mt-10 rounded-lg bg-light-gray p-4 text-xs leading-relaxed text-gray-500">
+            {LEGAL_DISCLAIMER}
+          </p>
+          <div className="mt-8 border-t border-gray-100 pt-8">
             <Link href="/blog" className="text-primary hover:underline">
-              ← Back to Blog
+              ← Back to News &amp; Events
             </Link>
           </div>
         </div>

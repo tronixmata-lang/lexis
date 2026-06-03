@@ -4,9 +4,9 @@ import PageHeader from "@/components/PageHeader";
 import { getBlogPosts } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Legal Blog",
+  title: "News & Events",
   description:
-    "Legal insights and articles on Nepalese law, company registration, IP, startups, and more.",
+    "Legal news and articles from Lexis and Legis — carbon trading, e-commerce, NRN citizenship, and Nepalese law.",
 };
 
 export default async function BlogPage() {
@@ -15,9 +15,9 @@ export default async function BlogPage() {
   return (
     <>
       <PageHeader
-        title="Legal Blog"
-        subtitle="Expert insights on Nepalese law and business compliance"
-        breadcrumb="Blog"
+        title="News & Events"
+        subtitle="Legal insights and updates from our team"
+        breadcrumb="News"
       />
       <section className="section-padding">
         <div className="container-narrow">

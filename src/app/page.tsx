@@ -24,7 +24,7 @@ export default async function HomePage() {
       <AboutPreview />
       <WhyChooseUs />
       <CaseStudiesPreview studies={studies} />
-      <Testimonials items={testimonials} />
+      {testimonials.length > 0 && <Testimonials items={testimonials} />}
       <BlogPreview posts={posts} />
       <ContactSection />
     </>

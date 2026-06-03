@@ -20,7 +20,8 @@ export const metadata: Metadata = {
     template: `%s | ${BRAND.name}`,
   },
   description:
-    "Trusted legal advisors in Nepal delivering corporate law, litigation, IP, startup advisory, and comprehensive legal services for businesses and individuals.",
+    "Lexis and Legis Law Associates — leading law firm in Kathmandu, Nepal. Commercial law, litigation, foreign investment, IP, tax, and corporate legal services.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://lexislegis.com"),
   keywords: [
     "law firm in Nepal",
     "corporate lawyer Nepal",
@@ -32,6 +33,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: BRAND.name,
+    images: [
+      {
+        url: "/lexis.png",
+        alt: `${BRAND.name} logo`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: BRAND.name,
+    images: ["/lexis.png"],
+  },
+  icons: {
+    icon: "/lexis.png",
+    apple: "/lexis.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -42,6 +62,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <link rel="index" href="/" />
+      </head>
       <body className="min-h-screen antialiased">
         <LayoutShell>{children}</LayoutShell>
       </body>

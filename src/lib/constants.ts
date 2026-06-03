@@ -1,10 +1,43 @@
-export const BRAND = {
-  name: "Lexis & Legis",
-  tagline: "Legal Excellence",
+/** Official contact details — lexislegis.com */
+export const CONTACT = {
+  address: "Anamnagar Kathmandu, Nepal",
   email: "info@lexislegis.com",
-  phone: "+977 1-4XXXXXX",
-  address: "Kathmandu, Nepal",
+  phones: [
+    { display: "+977 15922904", tel: "+97715922904" },
+    { display: "9856044154", tel: "+9779856044154" },
+  ],
+  hours: "09:00 AM – 07:00 PM",
+  days: "Sunday - Friday",
 } as const;
+
+export const BRAND = {
+  name: "Lexis and Legis Law Associates",
+  legalName: "Lexis and Legis Law Associates Pvt. Ltd.",
+  tagline: "A Leading Law Firm Based in Kathmandu, Nepal",
+  email: CONTACT.email,
+  address: CONTACT.address,
+  phones: CONTACT.phones,
+  /** Primary line for display in single-line contexts */
+  phone: `${CONTACT.phones[0].display} · ${CONTACT.phones[1].display}`,
+  /** Mobile — quick-call CTA */
+  phoneDisplay: CONTACT.phones[1].display,
+  hours: CONTACT.hours,
+  days: CONTACT.days,
+  website: "https://lexislegis.com",
+  social: {
+    whatsapp: "https://wa.me/9779856044154",
+    facebook: "https://www.facebook.com/helloworldcorpofficial",
+    twitter: "https://twitter.com/helloworldcorpofficial",
+  },
+} as const;
+
+export { PRACTICE_AREAS, PRACTICE_AREAS_INTRO } from "./services";
+
+export const FIRM_MOTO = [
+  "Client Oriented",
+  "Professional and Efficient Service Delivery",
+  "Confidentiality",
+] as const;
 
 export const COLORS = {
   primary: "#0F4FA8",
@@ -16,91 +49,40 @@ export const COLORS = {
 } as const;
 
 export const TRUST_STATS = [
-  { value: "500+", label: "Cases Handled" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "15+", label: "Years Experience" },
-  { value: "50+", label: "Corporate Clients" },
-] as const;
-
-export const PRACTICE_AREAS = [
-  {
-    slug: "corporate-law",
-    title: "Corporate Law",
-    description:
-      "Company formation, governance, mergers, and regulatory compliance for businesses of all sizes.",
-    icon: "building",
-  },
-  {
-    slug: "litigation",
-    title: "Litigation",
-    description:
-      "Civil and commercial dispute resolution with strategic courtroom advocacy.",
-    icon: "scale",
-  },
-  {
-    slug: "intellectual-property",
-    title: "Intellectual Property",
-    description:
-      "Trademark, copyright, and patent protection for innovators and brands.",
-    icon: "lightbulb",
-  },
-  {
-    slug: "contract-drafting",
-    title: "Contract Drafting",
-    description:
-      "Precise, enforceable agreements tailored to your business relationships.",
-    icon: "document",
-  },
-  {
-    slug: "startup-advisory",
-    title: "Startup Advisory",
-    description:
-      "Legal guidance for founders—from incorporation to investment rounds.",
-    icon: "rocket",
-  },
-  {
-    slug: "arbitration",
-    title: "Arbitration & Dispute Resolution",
-    description:
-      "Efficient alternative dispute resolution outside traditional courts.",
-    icon: "handshake",
-  },
-  {
-    slug: "tax-compliance",
-    title: "Tax & Compliance",
-    description:
-      "Tax planning, filings, and regulatory compliance for Nepalese businesses.",
-    icon: "calculator",
-  },
-  {
-    slug: "real-estate",
-    title: "Real Estate Law",
-    description:
-      "Property transactions, due diligence, and land dispute resolution.",
-    icon: "home",
-  },
+  { value: "9–7", label: "Open Sun–Fri (Office Hours)" },
+  { value: "Global", label: "International Clients" },
+  { value: "Anamnagar", label: "Kathmandu Office" },
+  { value: "18+", label: "Practice Areas" },
 ] as const;
 
 export const WHY_CHOOSE = [
   {
-    title: "Expertise",
-    description:
-      "Deep understanding of complex legal matters across corporate, litigation, and regulatory domains.",
+    title: "Easy Access",
+    description: "Welcoming and experienced team available to assist you, including urgent legal matters.",
   },
   {
-    title: "Transparency",
+    title: "Accountable to Clients",
     description:
-      "Clear communication and upfront fee structures so you always know what to expect.",
+      "Every stage and scope of work is well-defined and communicated to clients in advance.",
   },
   {
-    title: "Client-Centric Approach",
+    title: "Partners With Extensive Experience",
     description:
-      "Solutions tailored to every client's unique situation, goals, and industry.",
+      "Professionally managed by attorneys providing global legal services across jurisdictions.",
   },
   {
-    title: "Results-Oriented",
+    title: "Quick Turnaround Time",
     description:
-      "Focused on achieving favorable outcomes efficiently and cost-effectively.",
+      "Incredibly reliable, quality and prompt services—timely advice saves time, effort and cost.",
+  },
+  {
+    title: "Effective Communications",
+    description: "We communicate with clients very well at every stage of engagement.",
+  },
+  {
+    title: "Wide Spectrum of Clients",
+    description:
+      "International clients in the US, Canada, Australia, India, England, Europe, and beyond.",
   },
 ] as const;
 
@@ -108,35 +90,37 @@ export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/practice-areas", label: "Practice Areas" },
   { href: "/about", label: "About" },
-  { href: "/team", label: "Team" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/blog", label: "Blog" },
+  { href: "/team", label: "Teams" },
+  { href: "/blog", label: "News & Events" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
 export const TEAM_MEMBERS = [
   {
-    name: "Adv. Rajesh Sharma",
-    role: "Managing Partner",
-    specialty: "Corporate Law & Litigation",
-    bio: "Over 15 years of experience advising multinational corporations and startups on complex legal matters in Nepal.",
+    name: "Gobinda Prasad Sigdel",
+    role: "Founding & Senior Partner",
+    specialty: "Corporate Litigation & Arbitration",
+    bio: "Founding partner with extensive experience in corporate litigation, commercial arbitration, and complex disputes before Nepalese courts and tribunals.",
   },
   {
-    name: "Adv. Priya Thapa",
-    role: "Senior Partner",
-    specialty: "Intellectual Property",
-    bio: "Leading IP attorney with expertise in trademark registration and IP enforcement across South Asia.",
+    name: "Bichar Sigdel",
+    role: "Founding & Managing Partner",
+    specialty: "Corporate & Commercial Law",
+    bio: "Managing partner overseeing firm operations and leading corporate, commercial, and cross-border legal matters for domestic and international clients.",
   },
   {
-    name: "Adv. Anil Karki",
-    role: "Partner",
-    specialty: "Tax & Compliance",
-    bio: "Specializes in tax planning, regulatory compliance, and foreign investment law for growing businesses.",
-  },
-  {
-    name: "Adv. Sunita Rai",
+    name: "Kiran Gurung",
     role: "Associate",
-    specialty: "Startup Advisory",
-    bio: "Passionate about helping entrepreneurs navigate legal challenges from incorporation to scale.",
+    specialty: "Litigation & Advisory",
+    bio: "Associate attorney supporting litigation, document drafting, and client advisory across civil and commercial practice areas.",
+  },
+  {
+    name: "Gita",
+    role: "Associate",
+    specialty: "Legal Research & Support",
+    bio: "Associate contributing to legal research, case preparation, and client support across the firm's practice areas.",
   },
 ] as const;
+
+export const LEGAL_DISCLAIMER =
+  "The articles and content provided on this website are intended for academic and educational purposes only. They are not intended to serve as legal advice or a substitute for professional consultation with qualified legal counsel. Laws and regulations are subject to change. Readers should not act based on any content found on this site without first seeking appropriate legal advice from a licensed attorney. Use of this website does not create an attorney-client relationship.";

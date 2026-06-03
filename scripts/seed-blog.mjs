@@ -1,0 +1,152 @@
+import { writeFileSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const root = join(__dirname, "..");
+
+const DISCLAIMER =
+  "The articles and content provided on this website are intended for academic and educational purposes only. They are not intended to serve as legal advice or a substitute for professional consultation with qualified legal counsel. We depend on various sources, policy and laws, while we strive to ensure the accuracy and relevance of the information presented, laws and regulations are subject to change, and the application of legal principles can vary based on specific facts and circumstances. Readers should not act or refrain from acting based on any content found on this site without first seeking appropriate legal or professional advice from a licensed attorney. Use of this website or communication with the firm through this platform does not create an attorney-client relationship. For legal assistance, please feel free contact our office directly.";
+
+const posts = [
+  {
+    id: "1",
+    slug: "carbon-trading-in-nepal",
+    title: "Carbon Trading in Nepal",
+    excerpt:
+      "An overview in policy, legal and institutional framework for Carbon Trading in Nepal.",
+    category: "Environment Law",
+    author: "Lexis-Legis-law-Associates",
+    publishedAt: "2025-05-30",
+    featured: true,
+    content: `An overview in policy, legal and institutional framework for Carbon Trading in Nepal.
+
+1. Concept of Carbon Trading
+
+Carbon trading is an international market mechanism designed to reduce greenhouse gas emissions. It involves the buying and selling of carbon credits, where one carbon credit represents the reduction or removal of one metric ton of carbon dioxide (CO₂) or its equivalent. Countries or organizations that exceed their emissions targets can purchase credits from those that have surplus reductions. In essence, carbon trading monetizes environmental services—particularly the ability of forests and other ecosystems to sequester carbon. Countries like Nepal, with rich forest resources, can earn revenue by conserving or expanding forest cover and reducing carbon emissions.
+
+2. Origin of Carbon Trading
+
+The concept of carbon trading was formalized in 1997 during the Kyoto Protocol at the Third Conference of the Parties (COP3). This agreement requires industrialized countries to reduce their greenhouse gas emissions by an average of 5.2% between 2008 and 2012. Article 12 enables developed countries to invest in emission-reduction projects in developing countries and receive Certified Emission Reductions (CERs). The Clean Development Mechanism (CDM) allowed developed countries to invest in emission-reducing projects in developing countries and earn CERs, effectively creating a global carbon market.
+
+The Paris Treaty (Paris Convention on Climate Change, 2015) is a legally binding international treaty under the UNFCCC, with non-binding emissions targets (relying on voluntary commitments—NDCs). Article 2 states the main objective to limit global temperature increase to well below 2°C above pre-industrial levels and pursue efforts to limit it to 1.5°C. Article 6 enables cost-effective mitigation by allowing countries to purchase emission reduction credits generated abroad. For seller countries like Nepal, participating in Article 6 offers access to finance and/or technology, enabling mitigation projects that might otherwise be unfeasible.
+
+3. National Legal Framework
+
+3.1. Environment Protection Act (2019) — For the first time, explicitly authorizes the Government of Nepal to engage in carbon trading (Section 28), empowering Nepal to trade carbon credits with foreign governments, international organizations and private sector actors as prescribed by rules, with benefit-sharing arrangements.
+
+3.2. Environment Protection Rules (2020) — Authorizes sale of carbon stock from sustainably managed forests on national or international carbon markets. Permits trading of reduced emissions from other activities via the government, eligible associations, or private sector. Establishes a Technical Committee to evaluate submitted concept notes (PINs) and Project Design Documents (PDDs). Creates a Steering Committee to review and guide PDD submissions. Designates the Ministry of Forests and Environment (MoFE) as the Designated National Authority (DNA) for overseeing carbon trading.
+
+4. Status of Implementation
+
+Nepal signed the Emission Reductions Payment Agreement (ERPA) with the World Bank's Forest Carbon Partnership Facility (FCPF) in 2021. The program covers ~1.7 million hectares across 13 Terai districts, aims to reduce ~9 million tons of CO₂ by 2025 and up to ~34 million tons by 2028. Nepal earns ~$5 per ton of emission reduction, with ~23% held as buffer for fires and reversals. At least 80% of proceeds must go to local and indigenous communities as per benefit-sharing rules.
+
+5. Current Revenue Generated by Nepal from Carbon Trading
+
+Nepal has received Rs 1.6 billion for the first time through carbon trading. Nepal received this amount in the first installment for reducing 2.4 million tons of carbon emissions from 2018 to 2024 from 1.7 million hectares of forests in 13 districts of the Terai region from Rautahat to Kanchanpur. The amount received is US$5 per ton based on an agreement with the World Bank's FCPF program. Nepal's contribution to the world's total carbon dioxide emissions is only 0.048 percent. According to Nepal's long-term strategy, the goal is to reduce carbon emissions to zero by 2045.
+
+6. Institutional Framework
+
+• Ministry of Forests and Environment (MoFE): Apex ministry for climate change policy, forestry, and carbon trading.
+• REDD Implementation Centre: Coordinates and monitors Nepal's REDD+ Strategy and carbon trading activities.
+• Forest Research and Training Centre (FRTC): Technical expertise in forest carbon measurement (MRV studies).
+• Department of Forests and Soil Conservation (DoFSC): National forest management and community forestry oversight.
+• Alternative Energy Promotion Centre (AEPC): Emission reduction projects (biogas, improved cookstoves).
+• Provincial and Local Governments: Implementation and benefit-sharing at local level.
+
+7. Procedure for Carbon Trading in Nepal (REDD+ Focus)
+
+Program Design → Baseline Establishment → Implementation → Measurement, Reporting, and Verification (MRV) → Credit Issuance → Trading & Payment under ERPA agreements.
+
+8. Conclusion
+
+Carbon trading presents a significant opportunity for Nepal to leverage its vast forest resources for climate finance and sustainable development. With active agreements like those with the World Bank and the LEAF Coalition, Nepal is poised to earn substantial revenue (potentially exceeding Rs. 75 billion) by 2026, rewarding efforts in forest conservation and sustainable management. These funds are crucial for achieving NDC targets, including net-zero emissions by 2045 and carbon negativity thereafter.
+
+Why with us?
+
+We act as bridge between government regulators, communities, and investors to ensure equitable, legally sound outcomes. We help stakeholders in project development and compliance, regulatory approvals, documentation and contracts, drafting sovereign ERPA terms and advising on legal frameworks for data collection/management. Please contact us to discuss how we can support your carbon trading goals.
+
+${DISCLAIMER}`,
+  },
+  {
+    id: "2",
+    slug: "e-commerce-and-online-business-registration-in-nepal",
+    title: "E-commerce and Online Business Registration in Nepal",
+    excerpt:
+      "Nepal's E-Commerce Act, 2081 establishes the first comprehensive legal framework for online business.",
+    category: "Commercial Law",
+    author: "Lexis-Legis-law-Associates",
+    publishedAt: "2025-06-01",
+    featured: true,
+    content: `The E-Commerce Act, 2081 establishes Nepal's first comprehensive legal framework for online business. It applies to all commercial transactions of goods or services conducted by electronic means in Nepal, covering individuals, businesses and platforms in online buying and selling. The Act's stated objectives include promoting transparency, security and efficiency in digital commerce, integrating small and medium enterprises into the digital economy, preventing fraud and protecting consumer rights. The Act came into force on Jestha 3, 2081 BS and applies throughout Nepal and also to individuals or entities outside Nepal that provide goods or services to Nepal through electronic commerce.
+
+Key features of the Act:
+
+Operation of Electronic Commerce: Any firm, company, or institution registered under prevailing law and authorized to trade goods or services can conduct e-commerce, subject to this Act. Goods or services prohibited from online purchase or sale by prevailing law or by notification in the Nepal Gazette cannot be traded electronically.
+
+Process of Online Business Registration:
+
+1. Establishment of Electronic Platform — Every business conducting e-commerce must establish an electronic platform displaying: name of the platform; business name, address, registering authority, and registration certificate number; office and branch details; permits for specific operations; intermediary or inventory-based business type; VAT or PAN number; contact information and customer service details; grievance handling contact; and listing number from the e-commerce portal.
+
+2. Listing on E-commerce Portal — After establishing a platform, businesses must apply electronically to be listed on the Department's e-commerce portal with business details, proprietor/partner/director information, business description, VAT/PAN, contact details, and branch locations. Existing businesses must apply within three months of the Act's commencement.
+
+Other Important Provisions include disclosure of goods/service details (price, tax, shipping, warranty, return policy), electronic contract formation, payment compliance with federal payment laws, delivery obligations, return policy for non-matching goods, import/export rules, privacy of personal information, prohibited sales without permits, liabilities for intermediary and inventory-based businesses, sellers, buyers and carriers, unfair trade practices prohibition, Department monitoring and inspection, complaint mechanisms, and penalties ranging from NPR 20,000 to NPR 500,000 and/or imprisonment from six months to three years.
+
+${DISCLAIMER}`,
+  },
+  {
+    id: "3",
+    slug: "legal-provisions-for-nrn-citizenship",
+    title: "Legal Provisions for NRN Citizenship",
+    excerpt:
+      "Nepal's framework for Non-Resident Nepali (NRN) citizenship — eligibility, rights, limitations, and application process.",
+    category: "Immigration Law",
+    author: "Lexis-Legis-law-Associates",
+    publishedAt: "2025-06-01",
+    featured: true,
+    content: `Nepal has provisions for Non-Resident Nepali (NRN) citizenship, allowing individuals of Nepali origin who have acquired foreign citizenship to maintain ties with their home country and enjoy certain rights. The NRN citizenship is primarily governed by the Constitution of Nepal, 2072 (2015) Article 14, Nepal Citizenship Act, 2063 (2006) Section 7(a) and 8A, Non-Resident Nepali Act, 2064 (2008), Non-Resident Nepali Rules, 2066 (2009), and Nepal Citizenship Regulations, 2063 (2006) Third Amendment of 2080/2023.
+
+Who is eligible?
+
+A person who him/herself or whose father, mother, grandfather, or grandmother was a citizen of Nepal at any time and has subsequently acquired the citizenship of any other foreign country other than a SAARC member country.
+
+Rights and Limitations:
+
+• Economic, social, and cultural rights including property ownership and investment.
+• No political rights (voting or public office).
+• Property purchase within prescribed limits (e.g., 2 Ropani in Kathmandu Valley, 8 Katha in Terai municipalities).
+• Investment as "Foreign Investors" under FITTA 2019.
+• Visa facilities including NRN visa valid with NRN ID card (up to 10 years).
+
+Application Process:
+
+1. Online application via portal (e.g., https://nrn.mofa.gov.np) with required documents.
+2. Proof of Nepali origin via citizenship certificates of self, parents, or grandparents.
+3. Submission to District Administration Office (DAO) in Nepal or Nepali Embassy/Consulate abroad.
+4. Document verification, oath-taking if applicable, and certificate issuance.
+
+Processing in Nepal typically takes 10-15 working days with complete documents. SAARC country citizenship holders are generally not eligible for NRN citizenship under this provision.
+
+${DISCLAIMER}`,
+  },
+  {
+    id: "4",
+    slug: "nepal-ma-darta-vivah-sambandhi-kanuni-vyavastha",
+    title: "नेपालमा दर्ता विवाह सम्बन्धी कानुनी व्यवस्था",
+    excerpt: "नेपालमा विवाह सम्बन्धी व्यवस्था — दर्ता विवाहको कानुनी ढाँचा।",
+    category: "Family Law",
+    author: "Lexis-Legis-Law-Associates",
+    publishedAt: "2025-06-01",
+    featured: false,
+    content: `नेपालमा विवाह सम्बन्धी व्यवस्था
+
+यो लेख नेपालमा दर्ता विवाह सम्बन्धी कानुनी व्यवस्थाको सामान्य परिचय प्रस्तुत गर्दछ। दर्ता विवाह नेपालमा Muluki Civil Code, 2074 अन्तर्गत वैधानिक रूपमा मान्यता प्राप्त विवाहको एक महत्वपूर्ण विधि हो।
+
+दर्ता विवाहका लागि आवश्यक प्रक्रिया, कागजात, स्थानीय निकायमा दर्ता, र वैधानिक अधिकार-कर्तव्यहरू सम्बन्धी विस्तृत जानकारी र व्यक्तिगत परामर्शका लागि कृपया हाम्रो कार्यालयमा सम्पर्क गर्नुहोस्।
+
+${DISCLAIMER}`,
+  },
+];
+
+writeFileSync(join(root, "data", "blog.json"), JSON.stringify(posts, null, 2));
+console.log("Seeded", posts.length, "blog posts");

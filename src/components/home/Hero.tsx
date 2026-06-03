@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BRAND } from "@/lib/constants";
 
 export default function Hero() {
   return (
@@ -15,13 +16,13 @@ export default function Hero() {
       <div className="container-narrow relative z-10 px-4 py-24 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-gold">
-            Law Firm in Nepal
+            Corporate Law Firm in Nepal
           </p>
           <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-            Strategic Legal Solutions for Businesses, Startups &amp; Individuals
+            Welcome to {BRAND.name}
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-gray-300 sm:text-xl">
-            Trusted legal advisors delivering practical, effective, and results-driven legal services.
+            {BRAND.tagline}. Trusted legal advisors delivering professional and efficient services in commercial and civil law.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Link href="/consultation" className="btn-gold text-center">
