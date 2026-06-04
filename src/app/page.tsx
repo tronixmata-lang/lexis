@@ -7,8 +7,8 @@ import WhyChooseUs from "@/components/home/WhyChooseUs";
 import CaseStudiesPreview from "@/components/home/CaseStudiesPreview";
 import Testimonials from "@/components/home/Testimonials";
 import BlogPreview from "@/components/home/BlogPreview";
-import ContactSection from "@/components/home/ContactSection";
-import { getBlogPosts, getCaseStudies, getTestimonials } from "@/lib/data";
+import { getBlogPosts, getCaseStudies } from "@/lib/data";
+import { getGoogleReviews } from "@/lib/google-reviews";
 import { BRAND } from "@/lib/constants";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -20,10 +20,10 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default async function HomePage() {
-  const [posts, studies, testimonials] = await Promise.all([
+  const [posts, studies, googleReviews] = await Promise.all([
     getBlogPosts(),
     getCaseStudies(),
-    getTestimonials(),
+    getGoogleReviews(),
   ]);
 
   return (
@@ -34,9 +34,8 @@ export default async function HomePage() {
       <AboutPreview />
       <WhyChooseUs />
       <CaseStudiesPreview studies={studies} />
-      {testimonials.length > 0 && <Testimonials items={testimonials} />}
       <BlogPreview posts={posts} />
-      <ContactSection />
+      <Testimonials initialData={googleReviews} />
     </>
   );
 }

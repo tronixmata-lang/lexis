@@ -10,10 +10,12 @@ export const CONTACT = {
   days: "Sunday - Friday",
   /** Anamnagar, Kathmandu — used for local SEO schema */
   geo: {
-    latitude: 27.6915,
-    longitude: 85.324,
+    latitude: 27.69784,
+    longitude: 85.32856,
   },
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Anamnagar+Kathmandu+Nepal",
+  googleReviewsUrl:
+    "https://www.google.com/maps/place/Lexis+%26+Legis+Law+Associates/@27.69784,85.3259851,17z/data=!4m8!3m7!1s0x39eb19bd8c5408bb:0xf47573840eb4b843!8m2!3d27.69784!4d85.32856!9m1!1b1!16s%2Fg%2F11t_sy0fkw",
 } as const;
 
 export const BRAND = {
