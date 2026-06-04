@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import { TEAM_MEMBERS } from "@/lib/constants";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our Team",
-  description: "Meet the experienced legal professionals at Lexis & Legis law firm in Nepal.",
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "Our Legal Team",
+  description:
+    "Meet the experienced legal professionals at Lexis and Legis Law Associates, a leading law firm in Kathmandu, Nepal.",
+  path: "/team",
+});
 
 export default function TeamPage() {
   return (
@@ -14,6 +17,10 @@ export default function TeamPage() {
         title="Our Legal Team"
         subtitle="Experienced attorneys dedicated to your success"
         breadcrumb="Team"
+        breadcrumbItems={[
+          { name: "Home", path: "/" },
+          { name: "Our Team", path: "/team" },
+        ]}
       />
       <section className="section-padding">
         <div className="container-narrow">

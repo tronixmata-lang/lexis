@@ -1,21 +1,31 @@
 import type { Metadata } from "next";
+import CalendlyEmbed from "@/components/CalendlyEmbed";
 import ContactForm from "@/components/ContactForm";
 import PageHeader from "@/components/PageHeader";
+import ScheduleOnlineFallback from "@/components/ScheduleOnlineFallback";
+import { getCalendlyUrl } from "@/lib/calendly";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Book Consultation",
-  description: "Schedule a legal consultation with Lexis & Legis. Online booking available.",
-};
-
-const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_URL;
+export const metadata: Metadata = createPageMetadata({
+  title: "Book Legal Consultation",
+  description:
+    "Schedule a consultation with experienced attorneys at Lexis and Legis Law Associates in Kathmandu, Nepal. Corporate, civil, IP and litigation advice.",
+  path: "/consultation",
+});
 
 export default function ConsultationPage() {
+  const calendlyUrl = getCalendlyUrl();
+
   return (
     <>
       <PageHeader
         title="Book a Consultation"
         subtitle="Schedule a meeting with our legal experts"
         breadcrumb="Consultation"
+        breadcrumbItems={[
+          { name: "Home", path: "/" },
+          { name: "Book Consultation", path: "/consultation" },
+        ]}
       />
       <section className="section-padding">
         <div className="container-narrow">
@@ -25,24 +35,10 @@ export default function ConsultationPage() {
               <p className="mt-4 text-gray-600">
                 Choose a convenient time for your initial consultation. Our team will review your matter and provide guidance on next steps.
               </p>
-              {CALENDLY ? (
-                <div className="mt-8 overflow-hidden rounded-lg border border-gray-200">
-                  <iframe
-                    src={CALENDLY}
-                    width="100%"
-                    height="600"
-                    frameBorder="0"
-                    title="Book consultation"
-                    className="min-h-[500px]"
-                  />
-                </div>
+              {calendlyUrl ? (
+                <CalendlyEmbed url={calendlyUrl} />
               ) : (
-                <div className="mt-8 rounded-lg border border-dashed border-gray-300 bg-light-gray p-8 text-center">
-                  <p className="text-gray-600">
-                    Add your Calendly URL to <code className="text-sm">NEXT_PUBLIC_CALENDLY_URL</code> in{" "}
-                    <code className="text-sm">.env.local</code> to enable online booking.
-                  </p>
-                </div>
+                <ScheduleOnlineFallback />
               )}
             </div>
             <div>

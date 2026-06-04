@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import { getCaseStudies } from "@/lib/data";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Case Studies",
-  description: "Success stories and case studies from Lexis & Legis law firm in Nepal.",
-};
+  description:
+    "Success stories and case studies from Lexis and Legis Law Associates, a leading law firm in Kathmandu, Nepal.",
+  path: "/case-studies",
+});
 
 export default async function CaseStudiesPage() {
   const studies = await getCaseStudies();
@@ -16,6 +19,10 @@ export default async function CaseStudiesPage() {
         title="Case Studies"
         subtitle="Proven results for our clients"
         breadcrumb="Success Stories"
+        breadcrumbItems={[
+          { name: "Home", path: "/" },
+          { name: "Case Studies", path: "/case-studies" },
+        ]}
       />
       <section className="section-padding">
         <div className="container-narrow">

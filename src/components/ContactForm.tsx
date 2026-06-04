@@ -6,7 +6,7 @@ import { PRACTICE_AREAS } from "@/lib/constants";
 interface ContactFormProps {
   source?: string;
   compact?: boolean;
-  /** Full contact page form — matches lexislegis.com fields */
+  /** Full contact page form, matches lexislegis.com fields */
   full?: boolean;
   darkLabels?: boolean;
 }

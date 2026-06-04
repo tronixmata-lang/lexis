@@ -1,4 +1,4 @@
-/** Icon keys for practice area cards — used across site */
+/** Icon keys for practice area cards, used across site */
 export const AREA_ICONS: Record<string, string> = {
   "civil-and-criminal-litigation": "scale",
   "labour-and-employment-law": "document",

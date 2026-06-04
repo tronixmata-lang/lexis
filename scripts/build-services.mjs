@@ -98,7 +98,7 @@ const pages = {
     body: [
       "We assist foreign clients through every stage of the investment lifecycle: market entry and entity setup (company registration, joint ventures, branch/subsidiary formation); regulatory compliance (FITTA approvals, NRB registration, repatriation structuring); project development and legal due diligence; contract drafting and negotiation (shareholder agreements, BOOT frameworks, tech transfer contracts); employment, tax, and immigration guidance; and dispute prevention and resolution.",
       "Foreign investment is approved through the Department of Industry (DOI) for investments up to NPR 6 billion, and the Investment Board Nepal (IBN) for investments above NPR 6 billion. FITTA's single-window mechanism is designed to provide a single point for investors to obtain all necessary approvals.",
-      "FITTA allows repatriation of profits, dividends, earnings, amounts from sale of shares or assets, principal and interest on foreign loans, and royalties—with Nepal Rastra Bank approval after taxes and legal obligations are settled. FITTA also provides visa facilities for foreign investors, authorized representatives, and family members.",
+      "FITTA allows repatriation of profits, dividends, earnings, amounts from sale of shares or assets, principal and interest on foreign loans, and royalties, with Nepal Rastra Bank approval after taxes and legal obligations are settled. FITTA also provides visa facilities for foreign investors, authorized representatives, and family members.",
     ],
     services: [
       "Market entry and entity setup",
@@ -133,9 +133,9 @@ const pages = {
     title: "Public Procurement and Arbitration",
     subtitle: "Procurement compliance and arbitration in Nepal",
     description:
-      "Public Procurement and Arbitration—two vital areas of law in Nepal's evolving commercial and infrastructure development landscape. Nepal is governed primarily by the Public Procurement Act, 2063 (2007) and the Public Procurement Regulations, 2064 (2008), providing a legal framework for transparent, competitive, and accountable procurement processes in the public sector.",
+      "Public Procurement and Arbitration, two vital areas of law in Nepal's evolving commercial and infrastructure development landscape. Nepal is governed primarily by the Public Procurement Act, 2063 (2007) and the Public Procurement Regulations, 2064 (2008), providing a legal framework for transparent, competitive, and accountable procurement processes in the public sector.",
     body: [
-      "We assist clients in navigating procurement procedures, preparing compliant bids, responding to disqualification or rejection notices, and handling review or complaint proceedings before the Public Procurement Monitoring Office (PPMO) and other regulatory bodies. We advise both national and international clients—contractors, suppliers, consultants, and government agencies.",
+      "We assist clients in navigating procurement procedures, preparing compliant bids, responding to disqualification or rejection notices, and handling review or complaint proceedings before the Public Procurement Monitoring Office (PPMO) and other regulatory bodies. We advise both national and international clients, contractors, suppliers, consultants, and government agencies.",
       "Arbitration has become a preferred method of dispute resolution in public contracts and private commercial matters in Nepal, governed by the Arbitration Act, 2055 (1999). Our team has substantial experience representing clients in arbitral proceedings related to infrastructure projects, public-private partnerships (PPPs), construction contracts, and procurement disputes.",
       "We assist international contractors, suppliers, and consultants in participating in government tenders and PPPs, ensuring bid compliance and eligibility, addressing disqualifications and blacklisting, filing PPMO complaints, and drafting procurement and implementation contracts.",
     ],
@@ -172,7 +172,7 @@ const pages = {
     description:
       "We provide focused legal counsel in Aviation Law, assisting domestic and international clients in navigating Nepal's unique regulatory, commercial, and operational aviation landscape.",
     body: [
-      "Nepal's aviation sector is governed by a combination of domestic legislation—primarily the Civil Aviation Act, 2015 (1959), the Civil Aviation Regulation, 2058 (2002), and directives issued by the Civil Aviation Authority of Nepal (CAAN)—alongside international conventions such as the Chicago Convention and ICAO standards, to which Nepal is a signatory.",
+      "Nepal's aviation sector is governed by a combination of domestic legislation, primarily the Civil Aviation Act, 2015 (1959), the Civil Aviation Regulation, 2058 (2002), and directives issued by the Civil Aviation Authority of Nepal (CAAN), alongside international conventions such as the Chicago Convention and ICAO standards, to which Nepal is a signatory.",
       "Given Nepal's complex airspace and geographical terrain, aviation operations here require careful legal and risk management planning. We support airlines, helicopter service providers, lessors, insurers, investors, and regulatory authorities in navigating these challenges with precision and legal clarity.",
     ],
     services: [
@@ -266,7 +266,7 @@ const pages = {
     description:
       "With increasing public and private investment in sectors such as transportation, energy, real estate, and industrial infrastructure, Nepal's construction and project finance landscape is both promising and complex. Our firm provides the legal insight and practical experience needed to navigate project risks, regulatory compliance, and financing structures.",
     body: [
-      "We work with local and international stakeholders across various sectors—hydropower, highways, airports, urban infrastructure, housing, and industrial parks—ensuring every project meets both Nepalese legal requirements and global financing standards.",
+      "We work with local and international stakeholders across various sectors, hydropower, highways, airports, urban infrastructure, housing, and industrial parks, ensuring every project meets both Nepalese legal requirements and global financing standards.",
     ],
     subsections: [
       {
@@ -351,9 +351,9 @@ const pages = {
     title: "Legal Due Diligence",
     subtitle: "Transaction support, risk assessment, and compliance reviews",
     description:
-      "We provide comprehensive legal due diligence for mergers, acquisitions, investments, and corporate transactions—identifying legal risks, regulatory compliance gaps, and contractual liabilities before you commit to a deal.",
+      "We provide comprehensive legal due diligence for mergers, acquisitions, investments, and corporate transactions, identifying legal risks, regulatory compliance gaps, and contractual liabilities before you commit to a deal.",
     body: [
-      "Our due diligence covers corporate records and governance, material contracts, pending and threatened litigation, intellectual property, employment and labour matters, regulatory licenses and permits, tax compliance, environmental obligations, and real property—delivered in clear reports for boards and investors.",
+      "Our due diligence covers corporate records and governance, material contracts, pending and threatened litigation, intellectual property, employment and labour matters, regulatory licenses and permits, tax compliance, environmental obligations, and real property, delivered in clear reports for boards and investors.",
       "We coordinate with financial, tax, and technical advisors to support domestic and cross-border transactions, ensuring holistic readiness for financial close and post-closing integration.",
     ],
     services: [

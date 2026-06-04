@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
-import {
-  PRACTICE_AREAS_COLUMN_1,
-  PRACTICE_AREAS_COLUMN_2,
-  PRACTICE_NAV_LABELS,
-} from "@/lib/practice-nav-labels";
+import { PracticeIcon } from "@/components/icons/PracticeIcons";
+import { AREA_ICONS, PRACTICE_AREA_ORDER } from "@/lib/area-icons";
+import { PRACTICE_NAV_LABELS } from "@/lib/practice-nav-labels";
 
 export default function NavbarPracticeDropdown() {
   const [open, setOpen] = useState(false);
@@ -51,52 +49,43 @@ export default function NavbarPracticeDropdown() {
       </div>
 
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-3 w-[min(100vw-2rem,520px)] before:absolute before:-top-2 before:left-6 before:h-0 before:w-0 before:border-8 before:border-transparent before:border-b-white before:content-['']">
+        <div className="absolute left-1/2 top-full z-50 mt-3 w-[min(100vw-2rem,760px)] -translate-x-1/2 before:absolute before:-top-2 before:left-1/2 before:h-0 before:w-0 before:-translate-x-1/2 before:border-8 before:border-transparent before:border-b-white before:content-[''] lg:left-0 lg:translate-x-0 lg:before:left-8 lg:before:translate-x-0">
           <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl">
-            <div className="flex flex-col gap-2 border-b border-gray-100 bg-gray-50 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 border-b border-gray-100 bg-gray-50 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">
                   18 Practice Areas
                 </p>
                 <p className="mt-1 text-sm text-gray-600">
-                  Browse our full range of legal services and support.
+                  Pick a service to learn more or get legal support.
                 </p>
               </div>
               <Link
                 href="/practice-areas"
-                className="text-sm font-semibold text-primary transition-colors hover:text-navy"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-navy"
                 onClick={() => setOpen(false)}
               >
-                View all practice areas →
+                View all practice areas
+                <span aria-hidden>→</span>
               </Link>
             </div>
-            <div className="grid grid-cols-1 gap-1 p-3 sm:grid-cols-2">
-              <ul className="space-y-1 rounded-2xl bg-white p-2 shadow-sm">
-                {PRACTICE_AREAS_COLUMN_1.map((slug) => (
-                  <li key={slug}>
-                    <Link
-                      href={`/${slug}`}
-                      className="block rounded-2xl px-4 py-3 text-sm font-semibold text-navy transition-colors hover:bg-primary/5 hover:text-primary"
-                      onClick={() => setOpen(false)}
-                    >
-                      {PRACTICE_NAV_LABELS[slug]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <ul className="space-y-1 rounded-2xl bg-white p-2 shadow-sm">
-                {PRACTICE_AREAS_COLUMN_2.map((slug) => (
-                  <li key={slug}>
-                    <Link
-                      href={`/${slug}`}
-                      className="block rounded-2xl px-4 py-3 text-sm font-semibold text-navy transition-colors hover:bg-primary/5 hover:text-primary"
-                      onClick={() => setOpen(false)}
-                    >
-                      {PRACTICE_NAV_LABELS[slug]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+
+            <div className="grid max-h-[min(70vh,520px)] grid-cols-1 gap-1 overflow-y-auto p-3 sm:grid-cols-2 lg:grid-cols-3">
+              {PRACTICE_AREA_ORDER.map((slug) => (
+                <Link
+                  key={slug}
+                  href={`/${slug}`}
+                  className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-primary/5"
+                  onClick={() => setOpen(false)}
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white [&_svg]:h-5 [&_svg]:w-5">
+                    <PracticeIcon name={AREA_ICONS[slug] ?? "document"} />
+                  </span>
+                  <span className="text-sm font-medium leading-snug text-navy group-hover:text-primary">
+                    {PRACTICE_NAV_LABELS[slug]}
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

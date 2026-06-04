@@ -3,12 +3,14 @@ import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import PracticeAreaCard from "@/components/practice/PracticeAreaCard";
 import { PRACTICE_AREAS, PRACTICE_AREAS_INTRO } from "@/lib/constants";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Practice Areas",
+export const metadata: Metadata = createPageMetadata({
+  title: "18 Practice Areas",
   description:
-    "18 practice areas at Lexis and Legis — litigation, foreign investment, IP, tax, aviation, capital markets, and more in Nepal.",
-};
+    "Explore litigation, foreign investment, banking, aviation, IP, tax, company law and more. Trusted legal advisors in Kathmandu, Nepal.",
+  path: "/practice-areas",
+});
 
 export default function PracticeAreasPage() {
   return (
@@ -17,6 +19,10 @@ export default function PracticeAreasPage() {
         title="Practice Areas"
         subtitle="Professional legal services in commercial and civil law"
         breadcrumb="Services"
+        breadcrumbItems={[
+          { name: "Home", path: "/" },
+          { name: "Practice Areas", path: "/practice-areas" },
+        ]}
       />
 
       <section className="border-b border-gray-100 bg-white py-10">

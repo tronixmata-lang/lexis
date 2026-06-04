@@ -23,19 +23,19 @@ const posts = [
 
 1. Concept of Carbon Trading
 
-Carbon trading is an international market mechanism designed to reduce greenhouse gas emissions. It involves the buying and selling of carbon credits, where one carbon credit represents the reduction or removal of one metric ton of carbon dioxide (CO₂) or its equivalent. Countries or organizations that exceed their emissions targets can purchase credits from those that have surplus reductions. In essence, carbon trading monetizes environmental services—particularly the ability of forests and other ecosystems to sequester carbon. Countries like Nepal, with rich forest resources, can earn revenue by conserving or expanding forest cover and reducing carbon emissions.
+Carbon trading is an international market mechanism designed to reduce greenhouse gas emissions. It involves the buying and selling of carbon credits, where one carbon credit represents the reduction or removal of one metric ton of carbon dioxide (CO₂) or its equivalent. Countries or organizations that exceed their emissions targets can purchase credits from those that have surplus reductions. In essence, carbon trading monetizes environmental services, particularly the ability of forests and other ecosystems to sequester carbon. Countries like Nepal, with rich forest resources, can earn revenue by conserving or expanding forest cover and reducing carbon emissions.
 
 2. Origin of Carbon Trading
 
 The concept of carbon trading was formalized in 1997 during the Kyoto Protocol at the Third Conference of the Parties (COP3). This agreement requires industrialized countries to reduce their greenhouse gas emissions by an average of 5.2% between 2008 and 2012. Article 12 enables developed countries to invest in emission-reduction projects in developing countries and receive Certified Emission Reductions (CERs). The Clean Development Mechanism (CDM) allowed developed countries to invest in emission-reducing projects in developing countries and earn CERs, effectively creating a global carbon market.
 
-The Paris Treaty (Paris Convention on Climate Change, 2015) is a legally binding international treaty under the UNFCCC, with non-binding emissions targets (relying on voluntary commitments—NDCs). Article 2 states the main objective to limit global temperature increase to well below 2°C above pre-industrial levels and pursue efforts to limit it to 1.5°C. Article 6 enables cost-effective mitigation by allowing countries to purchase emission reduction credits generated abroad. For seller countries like Nepal, participating in Article 6 offers access to finance and/or technology, enabling mitigation projects that might otherwise be unfeasible.
+The Paris Treaty (Paris Convention on Climate Change, 2015) is a legally binding international treaty under the UNFCCC, with non-binding emissions targets (relying on voluntary commitments, NDCs). Article 2 states the main objective to limit global temperature increase to well below 2°C above pre-industrial levels and pursue efforts to limit it to 1.5°C. Article 6 enables cost-effective mitigation by allowing countries to purchase emission reduction credits generated abroad. For seller countries like Nepal, participating in Article 6 offers access to finance and/or technology, enabling mitigation projects that might otherwise be unfeasible.
 
 3. National Legal Framework
 
-3.1. Environment Protection Act (2019) — For the first time, explicitly authorizes the Government of Nepal to engage in carbon trading (Section 28), empowering Nepal to trade carbon credits with foreign governments, international organizations and private sector actors as prescribed by rules, with benefit-sharing arrangements.
+3.1. Environment Protection Act (2019), For the first time, explicitly authorizes the Government of Nepal to engage in carbon trading (Section 28), empowering Nepal to trade carbon credits with foreign governments, international organizations and private sector actors as prescribed by rules, with benefit-sharing arrangements.
 
-3.2. Environment Protection Rules (2020) — Authorizes sale of carbon stock from sustainably managed forests on national or international carbon markets. Permits trading of reduced emissions from other activities via the government, eligible associations, or private sector. Establishes a Technical Committee to evaluate submitted concept notes (PINs) and Project Design Documents (PDDs). Creates a Steering Committee to review and guide PDD submissions. Designates the Ministry of Forests and Environment (MoFE) as the Designated National Authority (DNA) for overseeing carbon trading.
+3.2. Environment Protection Rules (2020), Authorizes sale of carbon stock from sustainably managed forests on national or international carbon markets. Permits trading of reduced emissions from other activities via the government, eligible associations, or private sector. Establishes a Technical Committee to evaluate submitted concept notes (PINs) and Project Design Documents (PDDs). Creates a Steering Committee to review and guide PDD submissions. Designates the Ministry of Forests and Environment (MoFE) as the Designated National Authority (DNA) for overseeing carbon trading.
 
 4. Status of Implementation
 
@@ -86,9 +86,9 @@ Operation of Electronic Commerce: Any firm, company, or institution registered u
 
 Process of Online Business Registration:
 
-1. Establishment of Electronic Platform — Every business conducting e-commerce must establish an electronic platform displaying: name of the platform; business name, address, registering authority, and registration certificate number; office and branch details; permits for specific operations; intermediary or inventory-based business type; VAT or PAN number; contact information and customer service details; grievance handling contact; and listing number from the e-commerce portal.
+1. Establishment of Electronic Platform, Every business conducting e-commerce must establish an electronic platform displaying: name of the platform; business name, address, registering authority, and registration certificate number; office and branch details; permits for specific operations; intermediary or inventory-based business type; VAT or PAN number; contact information and customer service details; grievance handling contact; and listing number from the e-commerce portal.
 
-2. Listing on E-commerce Portal — After establishing a platform, businesses must apply electronically to be listed on the Department's e-commerce portal with business details, proprietor/partner/director information, business description, VAT/PAN, contact details, and branch locations. Existing businesses must apply within three months of the Act's commencement.
+2. Listing on E-commerce Portal, After establishing a platform, businesses must apply electronically to be listed on the Department's e-commerce portal with business details, proprietor/partner/director information, business description, VAT/PAN, contact details, and branch locations. Existing businesses must apply within three months of the Act's commencement.
 
 Other Important Provisions include disclosure of goods/service details (price, tax, shipping, warranty, return policy), electronic contract formation, payment compliance with federal payment laws, delivery obligations, return policy for non-matching goods, import/export rules, privacy of personal information, prohibited sales without permits, liabilities for intermediary and inventory-based businesses, sellers, buyers and carriers, unfair trade practices prohibition, Department monitoring and inspection, complaint mechanisms, and penalties ranging from NPR 20,000 to NPR 500,000 and/or imprisonment from six months to three years.
 
@@ -99,7 +99,7 @@ ${DISCLAIMER}`,
     slug: "legal-provisions-for-nrn-citizenship",
     title: "Legal Provisions for NRN Citizenship",
     excerpt:
-      "Nepal's framework for Non-Resident Nepali (NRN) citizenship — eligibility, rights, limitations, and application process.",
+      "Nepal's framework for Non-Resident Nepali (NRN) citizenship, eligibility, rights, limitations, and application process.",
     category: "Immigration Law",
     author: "Lexis-Legis-law-Associates",
     publishedAt: "2025-06-01",
@@ -133,7 +133,7 @@ ${DISCLAIMER}`,
     id: "4",
     slug: "nepal-ma-darta-vivah-sambandhi-kanuni-vyavastha",
     title: "नेपालमा दर्ता विवाह सम्बन्धी कानुनी व्यवस्था",
-    excerpt: "नेपालमा विवाह सम्बन्धी व्यवस्था — दर्ता विवाहको कानुनी ढाँचा।",
+    excerpt: "नेपालमा विवाह सम्बन्धी व्यवस्था, दर्ता विवाहको कानुनी ढाँचा।",
     category: "Family Law",
     author: "Lexis-Legis-Law-Associates",
     publishedAt: "2025-06-01",

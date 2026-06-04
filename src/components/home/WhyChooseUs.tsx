@@ -6,7 +6,7 @@ export default function WhyChooseUs() {
       <div className="container-narrow">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-gold">Our Difference</p>
-          <h2 className="mt-2 text-3xl font-bold text-navy sm:text-4xl">Why Choose Lexis &amp; Legis</h2>
+          <h2 className="mt-2 text-3xl font-bold text-navy sm:text-4xl">Why Choose Lexis and Legis</h2>
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">

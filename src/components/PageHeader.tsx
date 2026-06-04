@@ -1,16 +1,23 @@
 import Link from "next/link";
+import JsonLd from "./JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export default function PageHeader({
   title,
   subtitle,
   breadcrumb,
+  breadcrumbItems,
 }: {
   title: string;
   subtitle?: string;
   breadcrumb?: string;
+  breadcrumbItems?: { name: string; path: string }[];
 }) {
   return (
     <section className="bg-navy py-16 text-white sm:py-20">
+      {breadcrumbItems && breadcrumbItems.length > 0 && (
+        <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      )}
       <div className="container-narrow px-4 text-center sm:px-6 lg:px-8">
         {breadcrumb && (
           <nav className="mb-4 text-sm text-gray-300" aria-label="Breadcrumb">

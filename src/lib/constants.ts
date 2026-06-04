@@ -1,4 +1,4 @@
-/** Official contact details — lexislegis.com */
+/** Official contact details, lexislegis.com */
 export const CONTACT = {
   address: "Anamnagar Kathmandu, Nepal",
   email: "info@lexislegis.com",
@@ -6,8 +6,14 @@ export const CONTACT = {
     { display: "+977 15922904", tel: "+97715922904" },
     { display: "9856044154", tel: "+9779856044154" },
   ],
-  hours: "09:00 AM – 07:00 PM",
+  hours: "09:00 AM to 07:00 PM",
   days: "Sunday - Friday",
+  /** Anamnagar, Kathmandu — used for local SEO schema */
+  geo: {
+    latitude: 27.6915,
+    longitude: 85.324,
+  },
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Anamnagar+Kathmandu+Nepal",
 } as const;
 
 export const BRAND = {
@@ -19,15 +25,13 @@ export const BRAND = {
   phones: CONTACT.phones,
   /** Primary line for display in single-line contexts */
   phone: `${CONTACT.phones[0].display} · ${CONTACT.phones[1].display}`,
-  /** Mobile — quick-call CTA */
+  /** Mobile, quick-call CTA */
   phoneDisplay: CONTACT.phones[1].display,
   hours: CONTACT.hours,
   days: CONTACT.days,
   website: "https://lexislegis.com",
   social: {
     whatsapp: "https://wa.me/9779856044154",
-    facebook: "https://www.facebook.com/helloworldcorpofficial",
-    twitter: "https://twitter.com/helloworldcorpofficial",
   },
 } as const;
 
@@ -49,7 +53,7 @@ export const COLORS = {
 } as const;
 
 export const TRUST_STATS = [
-  { value: "9–7", label: "Open Sun–Fri (Office Hours)" },
+  { value: "9 to 7", label: "Open Sun to Fri (Office Hours)" },
   { value: "Global", label: "International Clients" },
   { value: "Anamnagar", label: "Kathmandu Office" },
   { value: "18+", label: "Practice Areas" },
@@ -73,7 +77,7 @@ export const WHY_CHOOSE = [
   {
     title: "Quick Turnaround Time",
     description:
-      "Incredibly reliable, quality and prompt services—timely advice saves time, effort and cost.",
+      "Incredibly reliable, quality and prompt services, timely advice saves time, effort and cost.",
   },
   {
     title: "Effective Communications",

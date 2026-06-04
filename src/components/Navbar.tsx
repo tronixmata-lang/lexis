@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useState } from "react";
 import Logo from "./Logo";
 import NavbarPracticeDropdown from "./NavbarPracticeDropdown";
-import { NAV_LINKS, PRACTICE_AREAS } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
+import { AREA_ICONS, PRACTICE_AREA_ORDER } from "@/lib/area-icons";
+import { PracticeIcon } from "@/components/icons/PracticeIcons";
 import { PRACTICE_NAV_LABELS } from "@/lib/practice-nav-labels";
 
 const MAIN_LINKS = NAV_LINKS.filter((l) => l.href !== "/practice-areas");
@@ -64,20 +66,20 @@ export default function Navbar() {
 
       {open && (
         <div className="max-h-[85vh] overflow-y-auto border-t border-gray-100 bg-white px-4 py-4 lg:hidden">
-          <ul className="flex flex-col gap-1">
-            <li>
+          <ul className="flex flex-col items-center gap-1">
+            <li className="w-full max-w-xs">
               <Link
                 href="/"
-                className="block py-2 text-sm font-medium text-dark-text"
+                className="block py-2 text-center text-sm font-medium text-dark-text"
                 onClick={() => setOpen(false)}
               >
                 Home
               </Link>
             </li>
-            <li>
+            <li className="w-full max-w-sm">
               <button
                 type="button"
-                className="flex w-full items-center justify-between py-2 text-sm font-medium text-dark-text"
+                className="flex w-full items-center justify-center gap-2 py-2 text-sm font-medium text-dark-text"
                 onClick={() => setPracticeOpen(!practiceOpen)}
               >
                 Practice Areas
@@ -91,42 +93,45 @@ export default function Navbar() {
                 </svg>
               </button>
               {practiceOpen && (
-                <ul className="mb-2 ml-2 max-h-64 overflow-y-auto border-l-2 border-gold/30 pl-3">
-                  {PRACTICE_AREAS.map((area) => (
-                    <li key={area.slug}>
+                <ul className="mb-2 max-h-72 space-y-1 overflow-y-auto border-t border-gold/20 pt-3">
+                  {PRACTICE_AREA_ORDER.map((slug) => (
+                    <li key={slug}>
                       <Link
-                        href={`/${area.slug}`}
-                        className="block py-2 text-sm font-semibold text-navy hover:text-primary"
+                        href={`/${slug}`}
+                        className="flex items-center justify-center gap-2 rounded-lg px-2 py-2 text-sm font-medium text-navy transition-colors hover:bg-primary/5 hover:text-primary"
                         onClick={() => setOpen(false)}
                       >
-                        {PRACTICE_NAV_LABELS[area.slug] ?? area.title}
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary [&_svg]:h-4 [&_svg]:w-4">
+                          <PracticeIcon name={AREA_ICONS[slug] ?? "document"} />
+                        </span>
+                        <span className="text-left">{PRACTICE_NAV_LABELS[slug]}</span>
                       </Link>
                     </li>
                   ))}
                   <li>
                     <Link
                       href="/practice-areas"
-                      className="block py-2 text-sm font-medium text-primary"
+                      className="block py-2 text-center text-sm font-semibold text-primary"
                       onClick={() => setOpen(false)}
                     >
-                      View all →
+                      View all practice areas →
                     </Link>
                   </li>
                 </ul>
               )}
             </li>
             {MAIN_LINKS.filter((l) => l.href !== "/").map((link) => (
-              <li key={link.href}>
+              <li key={link.href} className="w-full max-w-xs">
                 <Link
                   href={link.href}
-                  className="block py-2 text-sm font-medium text-dark-text"
+                  className="block py-2 text-center text-sm font-medium text-dark-text"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
-            <li>
+            <li className="w-full max-w-xs">
               <Link
                 href="/consultation"
                 className="btn-gold mt-2 block w-full text-center"

@@ -4,7 +4,7 @@ const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "9779800000000";
 
 export default function WhatsAppButton() {
   const message = encodeURIComponent(
-    "Hello Lexis & Legis, I would like to schedule a legal consultation."
+    "Hello Lexis and Legis, I would like to schedule a legal consultation."
   );
   const url = `https://wa.me/${WHATSAPP}?text=${message}`;
 

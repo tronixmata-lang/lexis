@@ -1,19 +1,17 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import ContactInfoBar from "./contact/ContactInfoBar";
 import { BRAND, CONTACT, NAV_LINKS, PRACTICE_AREAS } from "@/lib/constants";
 
 export default function Footer() {
   return (
     <footer>
-      <ContactInfoBar />
       <div className="bg-navy text-white">
         <div className="container-narrow section-padding">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div>
               <Logo />
               <p className="mt-4 text-sm leading-relaxed text-gray-300">
-                {BRAND.legalName} — {BRAND.tagline}. Professional legal services in commercial and civil law.
+                {BRAND.legalName}, {BRAND.tagline}. Professional legal services in commercial and civil law.
               </p>
             </div>
 

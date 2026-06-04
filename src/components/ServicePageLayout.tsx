@@ -23,13 +23,25 @@ export default function ServicePageLayout({
   subtitle,
   description,
   services,
+  slug,
   body,
   subsections,
   faq,
 }: ServicePageLayoutProps) {
+  const displayTitle = navLabel ?? title;
+
   return (
     <>
-      <PageHeader title={navLabel ?? title} subtitle={subtitle} breadcrumb="Practice Area" />
+      <PageHeader
+        title={displayTitle}
+        subtitle={subtitle}
+        breadcrumb="Practice Area"
+        breadcrumbItems={[
+          { name: "Home", path: "/" },
+          { name: "Practice Areas", path: "/practice-areas" },
+          { name: displayTitle, path: `/${slug}` },
+        ]}
+      />
 
       <section className="section-padding bg-white">
         <div className="container-narrow">
@@ -98,7 +110,7 @@ export default function ServicePageLayout({
                 <h3 className="font-serif text-xl font-bold">Why Lexis And Legis?</h3>
                 <p className="mt-2 text-sm text-gray-300">
                   {faq ??
-                    "Lexis and Legis is a leading law firm in Nepal, offering professional legal services in commercial and civil law—including legal consultations, document drafting, and court representation."}
+                    "Lexis and Legis is a leading law firm in Nepal, offering professional legal services in commercial and civil law, including legal consultations, document drafting, and court representation."}
                 </p>
                 <Link href="/contact" className="btn-gold mt-6 inline-block text-sm">
                   Discuss Your Matter

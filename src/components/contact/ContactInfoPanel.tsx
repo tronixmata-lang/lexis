@@ -3,10 +3,18 @@ import { BRAND, CONTACT } from "@/lib/constants";
 
 export default function ContactInfoPanel() {
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 text-center">
       <div className="rounded-xl border border-white/10 bg-white/5 p-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-gold">Our Offices</p>
         <p className="mt-2 font-medium text-white">{CONTACT.address}</p>
+        <a
+          href={CONTACT.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-block text-sm font-medium text-gold hover:underline"
+        >
+          Get Directions
+        </a>
       </div>
 
       <div className="rounded-xl border border-white/10 bg-white/5 p-5">
@@ -33,7 +41,7 @@ export default function ContactInfoPanel() {
         </a>
       </div>
 
-      <div className="flex flex-wrap gap-3 pt-1">
+      <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
         <a
           href={BRAND.social.whatsapp}
           target="_blank"
