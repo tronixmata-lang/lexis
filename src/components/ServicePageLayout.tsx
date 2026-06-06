@@ -35,7 +35,6 @@ export default function ServicePageLayout({
       <PageHeader
         title={displayTitle}
         subtitle={subtitle}
-        breadcrumb="Practice Area"
         breadcrumbItems={[
           { name: "Home", path: "/" },
           { name: "Practice Areas", path: "/practice-areas" },

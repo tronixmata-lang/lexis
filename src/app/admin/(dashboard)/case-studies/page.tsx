@@ -10,6 +10,7 @@ const empty: CaseStudy = {
   category: "",
   summary: "",
   outcome: "",
+  image: "",
   featured: false,
 };
 
@@ -49,6 +50,7 @@ export default function AdminCaseStudiesPage() {
         </div>
         <textarea placeholder="Summary" value={form.summary} onChange={(e) => setForm({ ...form, summary: e.target.value })} required rows={2} className="w-full rounded border px-3 py-2 text-sm" />
         <textarea placeholder="Outcome" value={form.outcome} onChange={(e) => setForm({ ...form, outcome: e.target.value })} required rows={2} className="w-full rounded border px-3 py-2 text-sm" />
+        <input placeholder="Image URL" value={form.image ?? ""} onChange={(e) => setForm({ ...form, image: e.target.value })} className="w-full rounded border px-3 py-2 text-sm" />
         <label className="flex items-center gap-2 text-sm">
           <input type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} />
           Featured on homepage

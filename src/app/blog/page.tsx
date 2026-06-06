@@ -19,7 +19,6 @@ export default async function BlogPage() {
       <PageHeader
         title="News & Events"
         subtitle="Legal insights and updates from our team"
-        breadcrumb="News"
         breadcrumbItems={[
           { name: "Home", path: "/" },
           { name: "News & Events", path: "/blog" },

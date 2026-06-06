@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CaseStudyCard from "@/components/CaseStudyCard";
 import type { CaseStudy } from "@/lib/types";
 
 export default function CaseStudiesPreview({ studies }: { studies: CaseStudy[] }) {
@@ -14,16 +15,7 @@ export default function CaseStudiesPreview({ studies }: { studies: CaseStudy[] }
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {featured.map((study) => (
-            <article key={study.id} className="card-hover rounded-lg bg-white p-6 shadow-sm">
-              <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                {study.category}
-              </span>
-              <h3 className="mt-4 text-xl font-semibold text-navy">{study.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600">{study.summary}</p>
-              <p className="mt-4 border-t border-gray-100 pt-4 text-sm font-medium text-primary">
-                {study.outcome}
-              </p>
-            </article>
+            <CaseStudyCard key={study.id} study={study} />
           ))}
         </div>
 

@@ -44,8 +44,12 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/lexis.png",
-    apple: "/lexis.png",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/lexis.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.svg",
+    shortcut: "/lexis.png",
   },
 };
 

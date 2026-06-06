@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
 import ContactInfoPanel from "@/components/contact/ContactInfoPanel";
 import { BRAND, CONTACT } from "@/lib/constants";
@@ -22,6 +23,13 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/40 via-navy to-navy" />
         <div className="container-narrow relative z-10 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
+            <Breadcrumbs
+              items={[
+                { name: "Home", path: "/" },
+                { name: "Contact", path: "/contact" },
+              ]}
+              className="mb-6"
+            />
             <p className="text-sm font-semibold uppercase tracking-widest text-gold">Contact</p>
             <h1 className="mt-3 font-serif text-4xl font-bold leading-tight sm:text-5xl">
               Your Legal Solution Starts Here

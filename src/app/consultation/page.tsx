@@ -21,7 +21,6 @@ export default function ConsultationPage() {
       <PageHeader
         title="Book a Consultation"
         subtitle="Schedule a meeting with our legal experts"
-        breadcrumb="Consultation"
         breadcrumbItems={[
           { name: "Home", path: "/" },
           { name: "Book Consultation", path: "/consultation" },

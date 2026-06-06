@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/data";
 import { LEGAL_DISCLAIMER } from "@/lib/constants";
@@ -47,6 +48,14 @@ export default async function BlogPostPage({
       <JsonLd data={articleSchema(post)} />
       <section className="bg-navy py-16 text-white">
         <div className="container-narrow px-4 text-center sm:px-6">
+          <Breadcrumbs
+            items={[
+              { name: "Home", path: "/" },
+              { name: "News & Events", path: "/blog" },
+              { name: post.title, path: `/blog/${post.slug}` },
+            ]}
+            className="mb-6"
+          />
           <span className="text-sm font-medium uppercase tracking-widest text-gold">{post.category}</span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl">{post.title}</h1>
           <p className="mt-4 text-gray-300">

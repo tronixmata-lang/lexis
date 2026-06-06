@@ -16,7 +16,6 @@ export default function TeamPage() {
       <PageHeader
         title="Our Legal Team"
         subtitle="Experienced attorneys dedicated to your success"
-        breadcrumb="Team"
         breadcrumbItems={[
           { name: "Home", path: "/" },
           { name: "Our Team", path: "/team" },

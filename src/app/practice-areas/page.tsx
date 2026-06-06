@@ -18,7 +18,6 @@ export default function PracticeAreasPage() {
       <PageHeader
         title="Practice Areas"
         subtitle="Professional legal services in commercial and civil law"
-        breadcrumb="Services"
         breadcrumbItems={[
           { name: "Home", path: "/" },
           { name: "Practice Areas", path: "/practice-areas" },

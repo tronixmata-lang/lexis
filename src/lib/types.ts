@@ -27,6 +27,7 @@ export interface CaseStudy {
   category: string;
   summary: string;
   outcome: string;
+  image?: string;
   featured?: boolean;
 }
 

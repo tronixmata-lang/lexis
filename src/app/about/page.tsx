@@ -35,7 +35,6 @@ export default function AboutPage() {
       <PageHeader
         title="About Us"
         subtitle={BRAND.tagline}
-        breadcrumb="About"
         breadcrumbItems={[
           { name: "Home", path: "/" },
           { name: "About Us", path: "/about" },

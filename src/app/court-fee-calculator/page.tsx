@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import CourtFeeCalculator from "@/components/tools/CourtFeeCalculator";
@@ -23,7 +22,6 @@ export default function CourtFeeCalculatorPage() {
       <PageHeader
         title="Court Fee Calculator"
         subtitle="Professional tool for estimating court filing fees in Nepal"
-        breadcrumb="Court Fee"
         breadcrumbItems={[
           { name: "Home", path: "/" },
           { name: "Court Fee Calculator", path: "/court-fee-calculator" },
@@ -164,35 +162,6 @@ export default function CourtFeeCalculatorPage() {
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-navy text-white">
-        <div className="container-narrow">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-serif text-3xl font-bold">Important notice</h2>
-            <div className="mt-6 space-y-4 text-left text-sm leading-relaxed text-gray-300">
-              <p>
-                This calculator is provided for informational and planning purposes only. It computes
-                court fee based on the progressive slab rates under Section 69 of the{" "}
-                {COURT_FEE_LEGAL_BASIS.act}. Actual court fee may vary depending on the nature of the
-                case, court jurisdiction, amendments to law, and specific orders of the court.
-              </p>
-              <p>
-                Fixed-fee matters under Section 70, exempted cases, and appeals with distinct fee
-                provisions are not covered by this tool. For accurate fee assessment and case-specific
-                legal advice, consult a qualified advocate before filing.
-              </p>
-            </div>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href="/contact" className="btn-gold">
-                Contact Our Team
-              </Link>
-              <Link href="/consultation" className="btn-outline">
-                Book a Consultation
-              </Link>
             </div>
           </div>
         </div>
