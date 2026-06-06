@@ -98,6 +98,7 @@ export const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/team", label: "Teams" },
   { href: "/blog", label: "News & Events" },
+  { href: "/court-fee-calculator", label: "Court Fee" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
 import NavbarPracticeDropdown from "./NavbarPracticeDropdown";
 import { NAV_LINKS } from "@/lib/constants";
@@ -14,9 +14,42 @@ const MAIN_LINKS = NAV_LINKS.filter((l) => l.href !== "/practice-areas");
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [practiceOpen, setPracticeOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY.current;
+
+      if (Math.abs(delta) < 8) {
+        return;
+      }
+
+      if (currentScrollY <= 0) {
+        setVisible(true);
+      } else if (delta > 0) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    lastScrollY.current = window.scrollY;
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const showNavbar = visible || open;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 shadow-sm backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-50 bg-white/95 shadow-sm backdrop-blur-md transition-transform duration-300 ease-in-out ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <nav className="container-narrow flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Logo />
 
