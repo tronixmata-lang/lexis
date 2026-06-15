@@ -37,6 +37,9 @@ export const BRAND = {
   },
 } as const;
 
+/** Browser tab / SEO default site title */
+export const SITE_TITLE = "Lexislegis || Best Consulting and Law Firm in nepal";
+
 export { PRACTICE_AREAS, PRACTICE_AREAS_INTRO } from "./services";
 
 export const FIRM_MOTO = [

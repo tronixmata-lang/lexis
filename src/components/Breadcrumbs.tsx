@@ -7,22 +7,35 @@ export type BreadcrumbItem = {
   path: string;
 };
 
+type BreadcrumbsProps = {
+  items: BreadcrumbItem[];
+  className?: string;
+  variant?: "dark" | "light";
+  includeSchema?: boolean;
+};
+
 export default function Breadcrumbs({
   items,
   className = "",
-}: {
-  items: BreadcrumbItem[];
-  className?: string;
-}) {
+  variant = "dark",
+  includeSchema = true,
+}: BreadcrumbsProps) {
   if (items.length === 0) {
     return null;
   }
 
+  const isLight = variant === "light";
+  const justify = className.includes("justify-") ? "" : "justify-center";
+
   return (
     <>
-      <JsonLd data={breadcrumbSchema(items)} />
-      <nav className={className} aria-label="Breadcrumb">
-        <ol className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-gray-300">
+      {includeSchema && <JsonLd data={breadcrumbSchema(items)} />}
+      <nav className={`${className} ${justify}`.trim()} aria-label="Breadcrumb">
+        <ol
+          className={`inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm ${
+            isLight ? "text-gray-500" : "text-gray-300"
+          }`}
+        >
           {items.map((item, index) => {
             const isLast = index === items.length - 1;
 
@@ -34,11 +47,17 @@ export default function Breadcrumbs({
                   </span>
                 )}
                 {isLast ? (
-                  <span className="font-semibold text-white" aria-current="page">
+                  <span
+                    className={`font-semibold ${isLight ? "text-navy" : "text-white"}`}
+                    aria-current="page"
+                  >
                     {item.name}
                   </span>
                 ) : (
-                  <Link href={item.path} className="transition-colors hover:text-white">
+                  <Link
+                    href={item.path}
+                    className={`transition-colors ${isLight ? "hover:text-primary" : "hover:text-white"}`}
+                  >
                     {item.name}
                   </Link>
                 )}

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
+import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import PracticeAreaCard from "@/components/practice/PracticeAreaCard";
 import { PRACTICE_AREAS, PRACTICE_AREAS_INTRO } from "@/lib/constants";
+import { practiceAreasTrail } from "@/lib/breadcrumbs";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -13,15 +15,15 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function PracticeAreasPage() {
+  const breadcrumbs = practiceAreasTrail();
+
   return (
     <>
+      <SetBreadcrumbs items={breadcrumbs} />
       <PageHeader
         title="Practice Areas"
         subtitle="Professional legal services in commercial and civil law"
-        breadcrumbItems={[
-          { name: "Home", path: "/" },
-          { name: "Practice Areas", path: "/practice-areas" },
-        ]}
+        breadcrumbItems={breadcrumbs}
       />
 
       <section className="border-b border-gray-100 bg-white py-10">

@@ -18,7 +18,7 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {featured.map((post) => (
-            <BlogCard key={post.id} post={post} showReadLink />
+            <BlogCard key={post.id} post={post} />
           ))}
         </div>
 

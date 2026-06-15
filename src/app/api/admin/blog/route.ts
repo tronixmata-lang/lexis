@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
-import { getBlogPosts, saveBlogPosts } from "@/lib/data";
+import { getBlogPostsFresh, saveBlogPosts } from "@/lib/data";
 import type { BlogPost } from "@/lib/types";
 
 async function requireAuth() {
@@ -13,7 +13,7 @@ export async function GET() {
   if (!(await requireAuth())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const posts = await getBlogPosts();
+  const posts = await getBlogPostsFresh();
   return NextResponse.json(posts);
 }
 
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const body = (await request.json()) as BlogPost;
-  const posts = await getBlogPosts();
+  const posts = await getBlogPostsFresh();
   const newPost: BlogPost = {
     ...body,
     id: body.id || crypto.randomUUID(),
@@ -38,7 +38,7 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const body = (await request.json()) as BlogPost;
-  const posts = await getBlogPosts();
+  const posts = await getBlogPostsFresh();
   const index = posts.findIndex((p) => p.id === body.id);
   if (index === -1) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
@@ -53,7 +53,7 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const { id } = await request.json();
-  const posts = await getBlogPosts();
+  const posts = await getBlogPostsFresh();
   const filtered = posts.filter((p) => p.id !== id);
   await saveBlogPosts(filtered);
   return NextResponse.json({ success: true });

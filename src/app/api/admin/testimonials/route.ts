@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
-import { getTestimonials, saveTestimonials } from "@/lib/data";
+import { getTestimonialsFresh, saveTestimonials } from "@/lib/data";
 import type { Testimonial } from "@/lib/types";
 
 async function requireAuth() {
@@ -13,7 +13,7 @@ export async function GET() {
   if (!(await requireAuth())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  return NextResponse.json(await getTestimonials());
+  return NextResponse.json(await getTestimonialsFresh());
 }
 
 export async function POST(request: Request) {
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const body = (await request.json()) as Testimonial;
-  const items = await getTestimonials();
+  const items = await getTestimonialsFresh();
   const newItem: Testimonial = { ...body, id: body.id || crypto.randomUUID() };
   items.unshift(newItem);
   await saveTestimonials(items);
@@ -33,7 +33,7 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const body = (await request.json()) as Testimonial;
-  const items = await getTestimonials();
+  const items = await getTestimonialsFresh();
   const index = items.findIndex((t) => t.id === body.id);
   if (index === -1) return NextResponse.json({ error: "Not found" }, { status: 404 });
   items[index] = body;
@@ -46,7 +46,7 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const { id } = await request.json();
-  const items = (await getTestimonials()).filter((t) => t.id !== id);
+  const items = (await getTestimonialsFresh()).filter((t) => t.id !== id);
   await saveTestimonials(items);
   return NextResponse.json({ success: true });
 }

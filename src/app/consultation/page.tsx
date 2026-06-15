@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
+import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import ContactForm from "@/components/ContactForm";
 import PageHeader from "@/components/PageHeader";
 import ScheduleOnlineFallback from "@/components/ScheduleOnlineFallback";
+import { consultationTrail } from "@/lib/breadcrumbs";
 import { getCalendlyUrl } from "@/lib/calendly";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -15,16 +17,15 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function ConsultationPage() {
   const calendlyUrl = getCalendlyUrl();
+  const breadcrumbs = consultationTrail();
 
   return (
     <>
+      <SetBreadcrumbs items={breadcrumbs} />
       <PageHeader
         title="Book a Consultation"
         subtitle="Schedule a meeting with our legal experts"
-        breadcrumbItems={[
-          { name: "Home", path: "/" },
-          { name: "Book Consultation", path: "/consultation" },
-        ]}
+        breadcrumbItems={breadcrumbs}
       />
       <section className="section-padding">
         <div className="container-narrow">

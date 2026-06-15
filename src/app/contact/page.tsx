@@ -1,52 +1,55 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
+import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import ContactInfoPanel from "@/components/contact/ContactInfoPanel";
-import { BRAND, CONTACT } from "@/lib/constants";
+import { BRAND } from "@/lib/constants";
+import { contactTrail } from "@/lib/breadcrumbs";
 import { createPageMetadata } from "@/lib/seo";
+import { getContactPageContent } from "@/sanity/lib/fetch";
 
-const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hello, I would like to get in touch with Lexis and Legis Law Associates."
-);
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getContactPageContent();
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Contact Us",
-  description:
-    "Contact Lexis and Legis at Anamnagar Kathmandu. Call +977 15922904 or 9856044154. Open Sunday to Friday, 9 AM to 7 PM. info@lexislegis.com",
-  path: "/contact",
-});
+  return createPageMetadata({
+    title: content.metaTitle,
+    description: content.metaDescription,
+    path: "/contact",
+  });
+}
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const content = await getContactPageContent();
+  const breadcrumbs = contactTrail();
+  const whatsappMessage = encodeURIComponent(
+    "Hello, I would like to get in touch with Lexis and Legis Law Associates."
+  );
+  const primaryPhone = content.phones[1] ?? content.phones[0];
+
   return (
     <>
+      <SetBreadcrumbs items={breadcrumbs} />
       <section className="relative overflow-hidden bg-navy py-20 text-white sm:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/40 via-navy to-navy" />
         <div className="container-narrow relative z-10 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <Breadcrumbs
-              items={[
-                { name: "Home", path: "/" },
-                { name: "Contact", path: "/contact" },
-              ]}
-              className="mb-6"
-            />
-            <p className="text-sm font-semibold uppercase tracking-widest text-gold">Contact</p>
-            <h1 className="mt-3 font-serif text-4xl font-bold leading-tight sm:text-5xl">
-              Your Legal Solution Starts Here
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-gray-300">
-              Whether you require legal advice, consultation or case evaluation, do not hesitate to contact us.
-              Your privacy is important to us and all details you share will be kept confidential.
+            <Breadcrumbs items={breadcrumbs} className="mb-6" includeSchema={false} />
+            <p className="text-sm font-semibold uppercase tracking-widest text-gold">
+              {content.heroEyebrow}
             </p>
+            <h1 className="mt-3 font-serif text-4xl font-bold leading-tight sm:text-5xl">
+              {content.heroTitle}
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-gray-300">{content.heroSubtitle}</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href={`tel:${CONTACT.phones[1].tel}`}
+                href={`tel:${primaryPhone.tel}`}
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-bold text-navy transition-transform hover:scale-105"
               >
-                Call {CONTACT.phones[1].display}
+                Call {primaryPhone.display}
               </a>
               <a
-                href={`${BRAND.social.whatsapp}?text=${WHATSAPP_MESSAGE}`}
+                href={`${BRAND.social.whatsapp}?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
@@ -63,12 +66,12 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-5 lg:gap-12">
             <div className="lg:col-span-2">
               <div className="sticky top-24 overflow-hidden rounded-2xl bg-navy p-6 text-center text-white shadow-xl sm:p-8">
-                <h2 className="font-serif text-2xl font-bold">Get In Touch</h2>
+                <h2 className="font-serif text-2xl font-bold">{content.getInTouchTitle}</h2>
                 <p className="mt-2 text-sm text-gray-400">
-                  {CONTACT.hours} · {CONTACT.days}
+                  {content.hours} · {content.days}
                 </p>
                 <div className="mt-8">
-                  <ContactInfoPanel />
+                  <ContactInfoPanel content={content} />
                 </div>
               </div>
             </div>
@@ -76,10 +79,8 @@ export default function ContactPage() {
             <div className="lg:col-span-3">
               <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xl sm:p-10">
                 <div className="mb-8 border-b border-gray-100 pb-6">
-                  <h2 className="text-2xl font-bold text-navy">Send Us a Message</h2>
-                  <p className="mt-2 text-gray-600">
-                    Fill out the form below and we will respond as soon as possible.
-                  </p>
+                  <h2 className="text-2xl font-bold text-navy">{content.formTitle}</h2>
+                  <p className="mt-2 text-gray-600">{content.formSubtitle}</p>
                 </div>
                 <ContactForm source="contact-page" full darkLabels />
               </div>

@@ -56,8 +56,6 @@ export const COURT_FEE_SLABS = [
 ] as const;
 
 export const COURT_FEE_LEGAL_BASIS = {
-  act: "National Civil Procedure (Code) Act, 2017",
-  actNepali: "Muluki Civil Procedure Code, 2074",
   sections: [
     {
       number: "63",

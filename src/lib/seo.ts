@@ -17,7 +17,13 @@ type PageMetadataOptions = {
   image?: string;
   type?: "website" | "article";
   publishedTime?: string;
+  language?: "en" | "ne";
+  keywords?: string[];
 };
+
+export function isNepaliContent(text: string): boolean {
+  return /[\u0900-\u097F]/.test(text);
+}
 
 export function createPageMetadata({
   title,
@@ -26,13 +32,27 @@ export function createPageMetadata({
   image = DEFAULT_OG_IMAGE,
   type = "website",
   publishedTime,
+  language,
+  keywords,
 }: PageMetadataOptions): Metadata {
   const url = absoluteUrl(path);
 
   return {
     title,
     description,
-    alternates: { canonical: url },
+    ...(keywords?.length ? { keywords } : {}),
+    alternates: {
+      canonical: url,
+      ...(language === "ne"
+        ? {
+            languages: {
+              "ne-NP": url,
+              en: url,
+              "x-default": url,
+            },
+          }
+        : {}),
+    },
     openGraph: {
       title,
       description,
@@ -70,5 +90,21 @@ export const BLOG_RELATED_PRACTICE: Record<string, { slug: string; label: string
   "nepal-ma-darta-vivah-sambandhi-kanuni-vyavastha": [
     { slug: "civil-and-criminal-litigation", label: "Civil And Criminal Litigation" },
     { slug: "property-law", label: "Property Law" },
+  ],
+  "consumer-protection-law-in-nepal": [
+    { slug: "civil-and-criminal-litigation", label: "Civil And Criminal Litigation" },
+    { slug: "commercial-contracts", label: "Commercial Contracts" },
+  ],
+  "court-marriage-in-nepal": [
+    { slug: "civil-and-criminal-litigation", label: "Civil And Criminal Litigation" },
+    { slug: "immigration-law", label: "Immigration Law" },
+  ],
+  "divorce-law-in-nepal": [
+    { slug: "civil-and-criminal-litigation", label: "Civil And Criminal Litigation" },
+    { slug: "property-law", label: "Property Law" },
+  ],
+  "partition-law-in-nepal": [
+    { slug: "property-law", label: "Property Law" },
+    { slug: "civil-and-criminal-litigation", label: "Civil And Criminal Litigation" },
   ],
 };

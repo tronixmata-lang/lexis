@@ -9,13 +9,15 @@ import Testimonials from "@/components/home/Testimonials";
 import BlogPreview from "@/components/home/BlogPreview";
 import { getBlogPosts, getCaseStudies } from "@/lib/data";
 import { getGoogleReviews } from "@/lib/google-reviews";
-import { BRAND } from "@/lib/constants";
+import { SITE_TITLE } from "@/lib/constants";
 import { createPageMetadata } from "@/lib/seo";
+import { DEFAULT_SITE_DESCRIPTION } from "@/lib/seo-keywords";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = createPageMetadata({
-  title: `Law Firm in Kathmandu, Nepal | ${BRAND.name}`,
-  description:
-    "Leading law firm in Kathmandu offering corporate law, litigation, foreign investment, IP, tax, and 18+ practice areas. Book a consultation with Lexis and Legis Law Associates.",
+  title: SITE_TITLE,
+  description: DEFAULT_SITE_DESCRIPTION,
   path: "/",
 });
 

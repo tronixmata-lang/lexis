@@ -1,6 +1,7 @@
 import { unstable_cache } from "next/cache";
 import { promises as fs } from "fs";
 import path from "path";
+import { CACHE_TAGS, REVALIDATE_SECONDS } from "./cache";
 import { BRAND, CONTACT } from "./constants";
 import { GOOGLE_REVIEWS } from "./google-reviews-data";
 
@@ -54,6 +55,12 @@ async function readCache(): Promise<GoogleReviewsData | null> {
   } catch {
     return null;
   }
+}
+
+async function writeCache(data: GoogleReviewsData): Promise<void> {
+  const filePath = path.join(process.cwd(), "data", CACHE_FILE);
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
 }
 
 async function resolvePlaceId(apiKey: string): Promise<string | null> {
@@ -123,11 +130,16 @@ async function fetchFromGoogle(): Promise<GoogleReviewsData | null> {
   if (data.status !== "OK" || !data.result) return readCache();
 
   const mapped = mapReviews(data.result);
-  return mapped.reviews.length ? mapped : readCache();
+  if (mapped.reviews.length) {
+    await writeCache(mapped);
+    return mapped;
+  }
+  return readCache();
 }
 
 const getCachedGoogleReviews = unstable_cache(fetchFromGoogle, ["google-reviews"], {
-  revalidate: 86400,
+  tags: [CACHE_TAGS.googleReviews],
+  revalidate: REVALIDATE_SECONDS.googleReviews,
 });
 
 export async function getGoogleReviews(): Promise<GoogleReviewsData> {

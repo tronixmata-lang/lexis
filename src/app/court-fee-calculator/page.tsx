@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
+import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import CourtFeeCalculator from "@/components/tools/CourtFeeCalculator";
 import {
   APPLICABLE_CASE_TYPES,
@@ -7,25 +8,26 @@ import {
   COURT_FEE_SLABS,
   FIXED_FEE_CASES,
 } from "@/lib/court-fees";
+import { courtFeeCalculatorTrail } from "@/lib/breadcrumbs";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Court Fee Calculator",
   description:
-    "Calculate court filing fees for civil cases in Nepal under the National Civil Procedure (Code) Act, 2017. Slab-wise breakdown, legal basis, and applicable case types.",
+    "Calculate court filing fees for civil cases in Nepal. Slab-wise breakdown, legal basis, and applicable case types.",
   path: "/court-fee-calculator",
 });
 
 export default function CourtFeeCalculatorPage() {
+  const breadcrumbs = courtFeeCalculatorTrail();
+
   return (
     <>
+      <SetBreadcrumbs items={breadcrumbs} />
       <PageHeader
         title="Court Fee Calculator"
         subtitle="Professional tool for estimating court filing fees in Nepal"
-        breadcrumbItems={[
-          { name: "Home", path: "/" },
-          { name: "Court Fee Calculator", path: "/court-fee-calculator" },
-        ]}
+        breadcrumbItems={breadcrumbs}
       />
 
       <section className="border-b border-gray-100 bg-white py-12">
@@ -35,9 +37,7 @@ export default function CourtFeeCalculatorPage() {
             <p className="mt-4 text-lg leading-relaxed text-gray-600">
               Court fee is a mandatory payment when filing a plaint, appeal, or counterclaim before a
               civil court in Nepal. This calculator assists clients, advocates, and court officials in
-              determining the fee payable based on the value or amount claimed, as prescribed under the{" "}
-              <span className="font-medium text-navy">{COURT_FEE_LEGAL_BASIS.act}</span> (
-              {COURT_FEE_LEGAL_BASIS.actNepali}).
+              determining the fee payable based on the value or amount claimed.
             </p>
           </div>
         </div>
@@ -57,10 +57,9 @@ export default function CourtFeeCalculatorPage() {
               <h2 className="mt-2 font-serif text-3xl font-bold text-navy">When is court fee required?</h2>
               <div className="prose-legal mt-6 space-y-4 text-gray-700">
                 <p>
-                  Under Section 63 of the {COURT_FEE_LEGAL_BASIS.act}, every person filing a plaint,
-                  appeal, or counterclaim in a civil matter must pay court fee at the time of filing.
-                  The amount is determined by the value of the subject matter or the amount claimed in
-                  the suit.
+                  Under Section 63, every person filing a plaint, appeal, or counterclaim in a civil
+                  matter must pay court fee at the time of filing. The amount is determined by the
+                  value of the subject matter or the amount claimed in the suit.
                 </p>
                 <p>
                   The rate of court fee is not a flat percentage of the total claim. Instead, Nepal
@@ -94,8 +93,8 @@ export default function CourtFeeCalculatorPage() {
             <p className="text-sm font-semibold uppercase tracking-widest text-gold">Official Rates</p>
             <h2 className="mt-2 font-serif text-3xl font-bold text-navy">Court fee structure</h2>
             <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-              The following rates are prescribed under Section 69 of the {COURT_FEE_LEGAL_BASIS.act}.
-              Each rate applies only to the portion of the claim within the stated range.
+              The following rates are prescribed under Section 69. Each rate applies only to the portion
+              of the claim within the stated range.
             </p>
           </div>
 
@@ -147,9 +146,8 @@ export default function CourtFeeCalculatorPage() {
               <p className="text-sm font-semibold uppercase tracking-widest text-gold">Exceptions</p>
               <h2 className="mt-2 font-serif text-3xl font-bold text-navy">Fixed-fee cases</h2>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Section 70 of the {COURT_FEE_LEGAL_BASIS.act} provides that certain matters carry a
-                fixed court fee of Rs. 500 regardless of the claimed amount. This calculator does not
-                apply to those cases.
+                Section 70 provides that certain matters carry a fixed court fee of Rs. 500 regardless
+                of the claimed amount. This calculator does not apply to those cases.
               </p>
               <ul className="mt-6 space-y-3">
                 {FIXED_FEE_CASES.map((item) => (

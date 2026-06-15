@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CoreValuesSection from "@/components/about/CoreValuesSection";
+import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import PageHeader from "@/components/PageHeader";
 import { BRAND, CONTACT, TRUST_STATS, WHY_CHOOSE } from "@/lib/constants";
+import { aboutTrail } from "@/lib/breadcrumbs";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -30,15 +32,15 @@ const EXPERTISE = [
 ] as const;
 
 export default function AboutPage() {
+  const breadcrumbs = aboutTrail();
+
   return (
     <>
+      <SetBreadcrumbs items={breadcrumbs} />
       <PageHeader
         title="About Us"
         subtitle={BRAND.tagline}
-        breadcrumbItems={[
-          { name: "Home", path: "/" },
-          { name: "About Us", path: "/about" },
-        ]}
+        breadcrumbItems={breadcrumbs}
       />
 
       {/* Stats strip */}

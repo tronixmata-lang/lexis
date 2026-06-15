@@ -7,7 +7,8 @@ Premium Next.js website for **Lexis & Legis**, a law firm in Nepal, with a full 
 - **Public website**: Homepage, About, Team, Practice Areas, Service pages, Case Studies, Blog, Contact, Consultation booking
 - **Brand design**: Royal Legal Blue (#0F4FA8), Navy (#0A1F44), Gold accent (#C9A227)
 - **SEO**: Sitemap, robots.txt, per-page metadata, blog URLs
-- **Admin panel**: Manage blog posts, testimonials, case studies, and view client inquiries
+- **Sanity CMS**: Blog posts, site SEO, and contact page content at `/studio`
+- **Admin panel**: View client inquiries at `/admin/inquiries`
 - **Integrations**: WhatsApp chat button, Calendly embed (optional), contact forms
 
 ## Getting Started
@@ -20,7 +21,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-### Admin Panel
+### Sanity CMS (Blog, SEO, Contact)
+
+- Studio URL: [http://localhost:3000/studio](http://localhost:3000/studio)
+- Sign in with your Sanity.io account (project members only)
+- Manage: **Blog Posts**, **Site SEO Settings**, **Contact Page**
+
+### Inquiries Admin
 
 - URL: [http://localhost:3000/admin](http://localhost:3000/admin)
 - Default login (from `.env.local`):
@@ -39,6 +46,30 @@ Open [http://localhost:3000](http://localhost:3000)
 | `NEXT_PUBLIC_SITE_URL` | Production site URL for SEO |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number (country code, no +) |
 | `NEXT_PUBLIC_CALENDLY_URL` | Optional Calendly booking embed URL |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Sanity project ID |
+| `NEXT_PUBLIC_SANITY_DATASET` | Sanity dataset (usually `production`) |
+| `SANITY_API_TOKEN` | Editor token for `npm run sanity:seed` |
+| `SANITY_REVALIDATE_SECRET` | Webhook secret for cache revalidation |
+
+## Sanity Setup (Vercel)
+
+1. Create a project at [sanity.io/manage](https://www.sanity.io/manage)
+2. Add env vars to `.env.local` and Vercel project settings
+3. Invite your team as Sanity project members (for Studio login)
+4. Seed existing content:
+
+```bash
+npm run sanity:seed
+```
+
+5. Open `/studio` — edit blog, SEO, and contact page
+6. **Webhook** (optional, for instant updates on Vercel):
+   - Sanity → API → Webhooks → Add webhook
+   - URL: `https://yourdomain.com/api/revalidate/sanity`
+   - Header: `Authorization: Bearer YOUR_SANITY_REVALIDATE_SECRET`
+   - Trigger on create/update/delete
+
+Without Sanity configured, the site falls back to `data/blog.json` and `constants.ts`.
 
 ## Pages
 
@@ -53,15 +84,17 @@ Open [http://localhost:3000](http://localhost:3000)
 | `/case-studies` | Success stories |
 | `/contact` | Contact form |
 | `/consultation` | Book consultation |
-| `/admin` | Admin dashboard |
+| `/studio` | Sanity CMS (blog, SEO, contact) |
+| `/admin` | Inquiries dashboard |
 
 ## Tech Stack
 
 - Next.js 16 (App Router)
 - TypeScript
 - Tailwind CSS v4
-- JSON file storage (blog, testimonials, case studies, inquiries)
-- JWT session auth for admin
+- Sanity CMS (blog, SEO, contact page)
+- JSON fallback + inquiries storage
+- JWT session auth for inquiries admin
 
 ## Production Deployment
 
@@ -78,4 +111,6 @@ npm start
 
 ## Data Storage
 
-Content is stored in the `data/` directory as JSON files. For production at scale, consider migrating to a database (PostgreSQL, Supabase, etc.).
+- **Blog, SEO, Contact page**: Sanity Content Lake (Vercel-safe)
+- **Contact form inquiries**: `data/inquiries.json` (use Supabase on Vercel for persistence)
+- **Fallback**: `data/blog.json` when Sanity is not configured

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
+import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import { TEAM_MEMBERS } from "@/lib/constants";
+import { teamTrail } from "@/lib/breadcrumbs";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -11,15 +13,15 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function TeamPage() {
+  const breadcrumbs = teamTrail();
+
   return (
     <>
+      <SetBreadcrumbs items={breadcrumbs} />
       <PageHeader
         title="Our Legal Team"
         subtitle="Experienced attorneys dedicated to your success"
-        breadcrumbItems={[
-          { name: "Home", path: "/" },
-          { name: "Our Team", path: "/team" },
-        ]}
+        breadcrumbItems={breadcrumbs}
       />
       <section className="section-padding">
         <div className="container-narrow">

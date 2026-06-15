@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import ServicePageLayout from "@/components/ServicePageLayout";
+import { getServiceFaqs } from "@/lib/service-faqs";
 import { createPageMetadata } from "@/lib/seo";
-import { serviceSchema } from "@/lib/schema";
+import { faqSchema, serviceSchema } from "@/lib/schema";
 import { SERVICE_PAGES } from "@/lib/services";
+
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return Object.keys(SERVICE_PAGES).map((service) => ({ service }));
@@ -38,10 +41,11 @@ export default async function ServicePage({
   if (!page) notFound();
 
   const displayTitle = page.navLabel ?? page.title;
+  const faqItems = getServiceFaqs(page);
 
   return (
     <>
-      <JsonLd data={serviceSchema(service, displayTitle, page.description)} />
+      <JsonLd data={[serviceSchema(service, displayTitle, page.description), faqSchema(faqItems)]} />
       <ServicePageLayout
         title={page.title}
         navLabel={page.navLabel}
@@ -50,7 +54,7 @@ export default async function ServicePage({
         services={page.services}
         body={page.body}
         subsections={page.subsections}
-        faq={page.faq}
+        faqItems={faqItems}
         slug={service}
       />
     </>

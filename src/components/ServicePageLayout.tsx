@@ -1,7 +1,11 @@
 import Link from "next/link";
+import Breadcrumbs from "./Breadcrumbs";
+import SetBreadcrumbs from "./BreadcrumbContext";
 import ContactForm from "./ContactForm";
 import PageHeader from "./PageHeader";
 import { BRAND } from "@/lib/constants";
+import { serviceTrail } from "@/lib/breadcrumbs";
+import type { FaqItem } from "@/lib/schema";
 
 import type { ServiceSubsection } from "@/lib/services";
 
@@ -14,7 +18,7 @@ interface ServicePageLayoutProps {
   slug: string;
   body?: string[];
   subsections?: ServiceSubsection[];
-  faq?: string;
+  faqItems: FaqItem[];
 }
 
 export default function ServicePageLayout({
@@ -26,24 +30,28 @@ export default function ServicePageLayout({
   slug,
   body,
   subsections,
-  faq,
+  faqItems,
 }: ServicePageLayoutProps) {
   const displayTitle = navLabel ?? title;
+  const breadcrumbs = serviceTrail(slug, displayTitle);
 
   return (
     <>
+      <SetBreadcrumbs items={breadcrumbs} />
       <PageHeader
         title={displayTitle}
         subtitle={subtitle}
-        breadcrumbItems={[
-          { name: "Home", path: "/" },
-          { name: "Practice Areas", path: "/practice-areas" },
-          { name: displayTitle, path: `/${slug}` },
-        ]}
+        breadcrumbItems={breadcrumbs}
       />
 
       <section className="section-padding bg-white">
         <div className="container-narrow">
+          <Breadcrumbs
+            items={breadcrumbs}
+            variant="light"
+            includeSchema={false}
+            className="mb-8 justify-start"
+          />
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <div className="rounded-xl border-l-4 border-gold bg-light-gray/50 p-6 sm:p-8">
@@ -98,18 +106,26 @@ export default function ServicePageLayout({
                 </ul>
               </div>
 
-              {faq && (
+              {faqItems.length > 0 && (
                 <div className="mt-10 rounded-xl border border-gray-100 bg-light-gray p-6">
-                  <h3 className="text-lg font-bold text-navy">Frequently Asked</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">{faq}</p>
+                  <h2 className="text-lg font-bold text-navy">Frequently Asked Questions</h2>
+                  <dl className="mt-4 space-y-5">
+                    {faqItems.map((item) => (
+                      <div key={item.question}>
+                        <dt className="font-semibold text-navy">{item.question}</dt>
+                        <dd className="mt-2 text-sm leading-relaxed text-gray-600">{item.answer}</dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
               )}
 
               <div className="mt-10 rounded-xl bg-navy p-6 text-white sm:p-8">
                 <h3 className="font-serif text-xl font-bold">Why Lexis And Legis?</h3>
                 <p className="mt-2 text-sm text-gray-300">
-                  {faq ??
-                    "Lexis and Legis is a leading law firm in Nepal, offering professional legal services in commercial and civil law, including legal consultations, document drafting, and court representation."}
+                  Lexis and Legis is a leading law firm in Nepal, offering professional legal services
+                  in commercial and civil law, including legal consultations, document drafting, and
+                  court representation.
                 </p>
                 <Link href="/contact" className="btn-gold mt-6 inline-block text-sm">
                   Discuss Your Matter

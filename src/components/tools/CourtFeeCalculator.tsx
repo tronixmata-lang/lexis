@@ -29,7 +29,7 @@ export default function CourtFeeCalculator() {
         <h2 className="mt-2 font-serif text-2xl font-bold sm:text-3xl">Calculate Your Court Fee</h2>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-300">
           Enter the value or amount claimed in your suit. The fee is computed instantly using the
-          progressive slab rates under Section 69 of the National Civil Procedure (Code) Act, 2017.
+          progressive slab rates under Section 69.
         </p>
       </div>
 

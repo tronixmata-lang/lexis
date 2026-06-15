@@ -1,12 +1,23 @@
 import Link from "next/link";
 import { BRAND, CONTACT } from "@/lib/constants";
+import type { ContactPageContent } from "@/sanity/lib/fetch";
 
-export default function ContactInfoPanel() {
+type ContactInfoPanelProps = {
+  content?: ContactPageContent;
+};
+
+export default function ContactInfoPanel({ content }: ContactInfoPanelProps) {
+  const address = content?.address ?? CONTACT.address;
+  const email = content?.email ?? CONTACT.email;
+  const hours = content?.hours ?? CONTACT.hours;
+  const days = content?.days ?? CONTACT.days;
+  const phones = content?.phones ?? CONTACT.phones;
+
   return (
     <div className="space-y-5 text-center">
       <div className="rounded-xl border border-white/10 bg-white/5 p-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-gold">Our Offices</p>
-        <p className="mt-2 font-medium text-white">{CONTACT.address}</p>
+        <p className="mt-2 font-medium text-white">{address}</p>
         <a
           href={CONTACT.mapsUrl}
           target="_blank"
@@ -20,7 +31,7 @@ export default function ContactInfoPanel() {
       <div className="rounded-xl border border-white/10 bg-white/5 p-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-gold">Contact Info</p>
         <div className="mt-2 space-y-1">
-          {CONTACT.phones.map((p) => (
+          {phones.map((p) => (
             <a key={p.tel} href={`tel:${p.tel}`} className="block font-medium text-white hover:text-gold">
               {p.display}
             </a>
@@ -30,14 +41,14 @@ export default function ContactInfoPanel() {
 
       <div className="rounded-xl border border-white/10 bg-white/5 p-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-gold">Opening Hours</p>
-        <p className="mt-2 font-medium text-white">{CONTACT.hours}</p>
-        <p className="text-sm text-gray-400">{CONTACT.days}</p>
+        <p className="mt-2 font-medium text-white">{hours}</p>
+        <p className="text-sm text-gray-400">{days}</p>
       </div>
 
       <div className="rounded-xl border border-white/10 bg-white/5 p-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-gold">Our Email</p>
-        <a href={`mailto:${CONTACT.email}`} className="mt-2 block font-medium text-white hover:text-gold">
-          {CONTACT.email}
+        <a href={`mailto:${email}`} className="mt-2 block font-medium text-white hover:text-gold">
+          {email}
         </a>
       </div>
 

@@ -8,10 +8,19 @@ export default function Footer() {
       <div className="bg-navy text-white">
         <div className="container-narrow section-padding">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-            <div>
+            <div className="max-w-sm">
               <Logo />
-              <p className="mt-4 text-sm leading-relaxed text-gray-300">
-                {BRAND.legalName}, {BRAND.tagline}. Professional legal services in commercial and civil law.
+              <div className="mt-6 border-l-2 border-gold pl-4">
+                <p className="font-serif text-lg font-bold leading-snug text-white">
+                  {BRAND.legalName}
+                </p>
+                <p className="mt-2 text-sm font-semibold text-gold">{BRAND.tagline}</p>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-gray-400">
+                Professional legal services in commercial and civil law.
+              </p>
+              <p className="mt-3 text-sm text-gray-300">
+                <span className="font-semibold text-white">{CONTACT.address}</span>
               </p>
             </div>
 
@@ -77,11 +86,21 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
+          <div className="mt-12 border-t border-white/10 pt-8 text-center">
             <p className="text-sm text-gray-400">
               &copy; {new Date().getFullYear()} {BRAND.name}. All rights reserved.
             </p>
-            <p className="text-sm text-gray-400">Law Firm in Nepal | Legal Excellence</p>
+            <p className="mt-2 text-sm text-gray-400">
+              Developed by{" "}
+              <a
+                href="https://nepatronix.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-gray-300 transition-colors hover:text-gold"
+              >
+                Nepatronix
+              </a>
+            </p>
           </div>
         </div>
       </div>

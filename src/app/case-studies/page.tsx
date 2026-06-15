@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import PageHeader from "@/components/PageHeader";
 import { getCaseStudies } from "@/lib/data";
+import { caseStudiesTrail } from "@/lib/breadcrumbs";
 import { createPageMetadata } from "@/lib/seo";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = createPageMetadata({
   title: "Case Studies",
@@ -13,16 +17,15 @@ export const metadata: Metadata = createPageMetadata({
 
 export default async function CaseStudiesPage() {
   const studies = await getCaseStudies();
+  const breadcrumbs = caseStudiesTrail();
 
   return (
     <>
+      <SetBreadcrumbs items={breadcrumbs} />
       <PageHeader
         title="Case Studies"
         subtitle="Proven results for our clients"
-        breadcrumbItems={[
-          { name: "Home", path: "/" },
-          { name: "Case Studies", path: "/case-studies" },
-        ]}
+        breadcrumbItems={breadcrumbs}
       />
       <section className="section-padding">
         <div className="container-narrow">

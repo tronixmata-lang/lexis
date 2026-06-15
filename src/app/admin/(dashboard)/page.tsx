@@ -1,29 +1,21 @@
 import Link from "next/link";
-import { getBlogPosts, getCaseStudies, getInquiries, getTestimonials } from "@/lib/data";
+import { getBlogPosts, getInquiries } from "@/lib/data";
 
 export default async function AdminDashboard() {
-  const [posts, testimonials, studies, inquiries] = await Promise.all([
-    getBlogPosts(),
-    getTestimonials(),
-    getCaseStudies(),
-    getInquiries(),
-  ]);
-
+  const [posts, inquiries] = await Promise.all([getBlogPosts(), getInquiries()]);
   const unread = inquiries.filter((i) => !i.read).length;
 
   const stats = [
-    { label: "Blog Posts", value: posts.length, href: "/admin/blog", color: "bg-primary" },
-    { label: "Testimonials", value: testimonials.length, href: "/admin/testimonials", color: "bg-gold" },
-    { label: "Case Studies", value: studies.length, href: "/admin/case-studies", color: "bg-navy" },
-    { label: "Inquiries", value: inquiries.length, href: "/admin/inquiries", color: "bg-primary", badge: unread },
+    { label: "Blog Posts", value: posts.length, href: "/studio", color: "bg-primary" },
+    { label: "Inquiries", value: inquiries.length, href: "/admin/inquiries", color: "bg-gold", badge: unread },
   ];
 
   return (
     <div>
       <h1 className="text-2xl font-bold text-navy">Dashboard</h1>
-      <p className="mt-1 text-gray-600">Welcome to Lexis &amp; Legis admin panel</p>
+      <p className="mt-1 text-gray-600">Manage content in Sanity Studio and view client inquiries.</p>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {stats.map((stat) => (
           <Link
             key={stat.label}
@@ -40,6 +32,17 @@ export default async function AdminDashboard() {
             ) : null}
           </Link>
         ))}
+
+        <Link
+          href="/studio"
+          className="card-hover rounded-lg border border-dashed border-primary/30 bg-primary/5 p-6 shadow-sm"
+        >
+          <div className="mb-4 h-1 w-12 rounded bg-primary" />
+          <p className="text-lg font-bold text-navy">Sanity Studio</p>
+          <p className="mt-2 text-sm text-gray-600">
+            Edit blog posts, site SEO, and contact page content.
+          </p>
+        </Link>
       </div>
 
       <div className="mt-10 rounded-lg bg-white p-6 shadow-sm">

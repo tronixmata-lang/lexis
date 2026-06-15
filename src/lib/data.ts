@@ -1,5 +1,18 @@
+import { unstable_cache } from "next/cache";
 import { promises as fs } from "fs";
 import path from "path";
+import { isSanityConfigured } from "../../sanity/env";
+import {
+  getSanityBlogPostBySlug,
+  getSanityBlogPosts,
+} from "@/sanity/lib/fetch";
+import {
+  CACHE_TAGS,
+  REVALIDATE_SECONDS,
+  revalidateBlogCache,
+  revalidateCaseStudiesCache,
+  revalidateTestimonialsCache,
+} from "./cache";
 import type { BlogPost, CaseStudy, Inquiry, Testimonial } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data");
@@ -30,37 +43,93 @@ async function writeJson<T>(filename: string, data: T): Promise<void> {
   await fs.writeFile(filePath, JSON.stringify(data, null, 2));
 }
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
+async function readBlogPosts(): Promise<BlogPost[]> {
   return readJson<BlogPost[]>("blog.json", []);
+}
+
+async function readTestimonials(): Promise<Testimonial[]> {
+  return readJson<Testimonial[]>("testimonials.json", []);
+}
+
+async function readCaseStudies(): Promise<CaseStudy[]> {
+  return readJson<CaseStudy[]>("case-studies.json", []);
+}
+
+const getCachedBlogPosts = unstable_cache(readBlogPosts, ["blog-posts"], {
+  tags: [CACHE_TAGS.blog],
+  revalidate: REVALIDATE_SECONDS.content,
+});
+
+const getCachedTestimonials = unstable_cache(readTestimonials, ["testimonials"], {
+  tags: [CACHE_TAGS.testimonials],
+  revalidate: REVALIDATE_SECONDS.content,
+});
+
+const getCachedCaseStudies = unstable_cache(readCaseStudies, ["case-studies"], {
+  tags: [CACHE_TAGS.caseStudies],
+  revalidate: REVALIDATE_SECONDS.content,
+});
+
+/** Cached — use on public pages. Prefers Sanity when configured. */
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  if (isSanityConfigured()) {
+    const posts = await getSanityBlogPosts();
+    if (posts.length > 0) return posts;
+  }
+  return getCachedBlogPosts();
+}
+
+/** Uncached — use in admin API or JSON fallback */
+export async function getBlogPostsFresh(): Promise<BlogPost[]> {
+  if (isSanityConfigured()) {
+    const posts = await getSanityBlogPosts();
+    if (posts.length > 0) return posts;
+  }
+  return readBlogPosts();
 }
 
 export async function saveBlogPosts(posts: BlogPost[]): Promise<void> {
   await writeJson("blog.json", posts);
+  revalidateBlogCache();
 }
 
 export async function getBlogPostBySlug(
   slug: string
 ): Promise<BlogPost | undefined> {
-  const posts = await getBlogPosts();
+  if (isSanityConfigured()) {
+    const post = await getSanityBlogPostBySlug(slug);
+    if (post) return post;
+  }
+  const posts = await getCachedBlogPosts();
   return posts.find((p) => p.slug === slug);
 }
 
 export async function getTestimonials(): Promise<Testimonial[]> {
-  return readJson<Testimonial[]>("testimonials.json", []);
+  return getCachedTestimonials();
+}
+
+export async function getTestimonialsFresh(): Promise<Testimonial[]> {
+  return readTestimonials();
 }
 
 export async function saveTestimonials(
   testimonials: Testimonial[]
 ): Promise<void> {
   await writeJson("testimonials.json", testimonials);
+  revalidateTestimonialsCache();
 }
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {
-  return readJson<CaseStudy[]>("case-studies.json", []);
+  return getCachedCaseStudies();
+}
+
+export async function getCaseStudiesFresh(): Promise<CaseStudy[]> {
+  return readCaseStudies();
 }
 
 export async function saveCaseStudies(studies: CaseStudy[]): Promise<void> {
   await writeJson("case-studies.json", studies);
+  revalidateCaseStudiesCache();
 }
 
 export async function getInquiries(): Promise<Inquiry[]> {
