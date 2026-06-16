@@ -9,7 +9,7 @@ export default function CaseStudiesPreview({ studies }: { studies: CaseStudy[] }
     <section className="section-padding bg-light-gray">
       <div className="container-narrow">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-gold">Our Specialization</p>
+          <p className="section-eyebrow">Our Specialization</p>
           <h2 className="mt-2 text-3xl font-bold text-navy sm:text-4xl">Areas of Expertise</h2>
         </div>
 

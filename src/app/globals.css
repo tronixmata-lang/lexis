@@ -221,6 +221,20 @@ h6 {
   @apply inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10;
 }
 
+.section-eyebrow {
+  @apply text-sm font-semibold uppercase tracking-widest;
+  color: #6d5616;
+}
+
+.section-eyebrow-dark {
+  @apply text-sm font-semibold uppercase tracking-widest text-gold;
+}
+
+.decorative-index {
+  @apply font-serif font-bold;
+  color: #757575;
+}
+
 .section-padding {
   @apply px-4 py-16 sm:px-6 lg:px-8 lg:py-24;
 }

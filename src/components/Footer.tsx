@@ -63,7 +63,11 @@ export default function Footer() {
                 <li>
                   <span className="block text-gold/80">Phone</span>
                   {CONTACT.phones.map((p) => (
-                    <a key={p.tel} href={`tel:${p.tel}`} className="block hover:text-gold">
+                    <a
+                      key={p.tel}
+                      href={`tel:${p.tel}`}
+                      className="inline-flex min-h-11 items-center py-1 hover:text-gold"
+                    >
                       {p.display}
                     </a>
                   ))}

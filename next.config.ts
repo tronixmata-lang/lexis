@@ -11,10 +11,6 @@ const nextConfig: NextConfig = {
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
       {
-        source: "/hero.jpg",
-        headers: [{ key: "Cache-Control", value: staticAssetCache }],
-      },
-      {
         source: "/icon-:size.png",
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },

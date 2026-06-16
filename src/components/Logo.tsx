@@ -18,7 +18,6 @@ export default function Logo({ className = "", size = "default" }: LogoProps) {
         alt={`${BRAND.name} logo`}
         width={220}
         height={66}
-        priority
         className={imageClass}
       />
     </Link>

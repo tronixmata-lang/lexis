@@ -6,7 +6,11 @@ import type { GoogleReview, GoogleReviewsData } from "@/lib/google-reviews";
 
 function Stars({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-0.5 text-gold" aria-label={`${rating} out of 5 stars`}>
+    <div
+      className="flex gap-0.5 text-gold"
+      role="img"
+      aria-label={`${rating} out of 5 stars`}
+    >
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
@@ -80,7 +84,7 @@ export default function Testimonials({ initialData }: { initialData: GoogleRevie
     <section id="testimonials" className="section-padding overflow-hidden bg-light-gray">
       <div className="container-narrow">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-gold">Client Voices</p>
+          <p className="section-eyebrow">Client Voices</p>
           <h2 className="mt-2 font-serif text-3xl font-bold text-navy sm:text-4xl">
             What Our Clients Say
           </h2>

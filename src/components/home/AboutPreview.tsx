@@ -23,7 +23,7 @@ export default function AboutPreview() {
             </div>
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-gold">About The Firm</p>
+            <p className="section-eyebrow-dark">About The Firm</p>
             <h2 className="mt-2 text-3xl font-bold sm:text-4xl">{BRAND.legalName}</h2>
             <p className="mt-6 leading-relaxed text-gray-300">
               A fast-growing law firm based in Kathmandu with working units all over Nepal. We specialize in Patent, Copyright, Trademark, Corporate Laws, Designs, Litigation and Arbitration, with international clients across the United States, Canada, Australia, India, England, Europe, and beyond.

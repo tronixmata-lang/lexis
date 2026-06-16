@@ -31,7 +31,7 @@ export default function PracticeAreaCard({
         <div className="text-primary transition-colors group-hover:text-navy">
           <PracticeIcon name={icon} />
         </div>
-        <span className="font-serif text-2xl font-bold leading-none text-gold/50">
+        <span className="decorative-index text-2xl leading-none" aria-hidden="true">
           {String(index + 1).padStart(2, "0")}
         </span>
       </div>

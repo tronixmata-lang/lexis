@@ -9,7 +9,7 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
     <section className="section-padding bg-light-gray">
       <div className="container-narrow">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-gold">Legal Insights</p>
+          <p className="section-eyebrow">Legal Insights</p>
           <h2 className="mt-2 text-3xl font-bold text-navy sm:text-4xl">News &amp; Events</h2>
           <p className="mx-auto mt-4 max-w-2xl text-gray-600">
             Expert articles on Nepalese law, business compliance, and legal best practices.

@@ -7,7 +7,7 @@ export default function PracticeAreas() {
     <section className="section-padding bg-light-gray">
       <div className="container-narrow">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-gold">What We Do</p>
+          <p className="section-eyebrow">What We Do</p>
           <h2 className="mt-2 text-3xl font-bold text-navy sm:text-4xl">Our Practice Areas</h2>
           <p className="mx-auto mt-4 max-w-2xl text-gray-600">{PRACTICE_AREAS_INTRO}</p>
         </div>
