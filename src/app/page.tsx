@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Hero from "@/components/home/Hero";
 import TrustIndicators from "@/components/home/TrustIndicators";
 import PracticeAreas from "@/components/home/PracticeAreas";
 import AboutPreview from "@/components/home/AboutPreview";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
-import CaseStudiesPreview from "@/components/home/CaseStudiesPreview";
-import Testimonials from "@/components/home/Testimonials";
-import BlogPreview from "@/components/home/BlogPreview";
-import { getBlogPosts, getCaseStudies } from "@/lib/data";
-import { getGoogleReviews } from "@/lib/google-reviews";
+import HomeDeferredSections from "@/components/home/HomeDeferredSections";
+import HomeSectionSkeleton from "@/components/home/HomeSectionSkeleton";
 import { SITE_TITLE } from "@/lib/constants";
 import { createPageMetadata } from "@/lib/seo";
 import { DEFAULT_SITE_DESCRIPTION } from "@/lib/seo-keywords";
@@ -21,13 +19,7 @@ export const metadata: Metadata = createPageMetadata({
   path: "/",
 });
 
-export default async function HomePage() {
-  const [posts, studies, googleReviews] = await Promise.all([
-    getBlogPosts(),
-    getCaseStudies(),
-    getGoogleReviews(),
-  ]);
-
+export default function HomePage() {
   return (
     <>
       <Hero />
@@ -35,9 +27,9 @@ export default async function HomePage() {
       <PracticeAreas />
       <AboutPreview />
       <WhyChooseUs />
-      <CaseStudiesPreview studies={studies} />
-      <BlogPreview posts={posts} />
-      <Testimonials initialData={googleReviews} />
+      <Suspense fallback={<HomeSectionSkeleton />}>
+        <HomeDeferredSections />
+      </Suspense>
     </>
   );
 }

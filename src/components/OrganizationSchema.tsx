@@ -1,19 +1,19 @@
 import JsonLd from "./JsonLd";
-import { getBlogPosts } from "@/lib/data";
 import { getBlogTitles } from "@/lib/blog-seo";
-import { getGoogleReviews } from "@/lib/google-reviews";
+import { getBlogPosts } from "@/lib/data";
+import { GOOGLE_REVIEWS } from "@/lib/google-reviews-data";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 export default async function OrganizationSchema() {
-  const [reviews, posts] = await Promise.all([getGoogleReviews(), getBlogPosts()]);
+  const posts = await getBlogPosts();
   const blogTitles = getBlogTitles(posts);
 
   return (
     <JsonLd
       data={[
         organizationSchema(
-          reviews.rating > 0
-            ? { rating: reviews.rating, totalReviews: reviews.totalReviews }
+          GOOGLE_REVIEWS.rating > 0
+            ? { rating: GOOGLE_REVIEWS.rating, totalReviews: GOOGLE_REVIEWS.totalReviews }
             : undefined,
           blogTitles
         ),

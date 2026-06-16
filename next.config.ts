@@ -1,30 +1,27 @@
 import type { NextConfig } from "next";
 
+const staticAssetCache = "public, max-age=31536000, immutable";
+
 const nextConfig: NextConfig = {
   transpilePackages: ["next-sanity", "sanity"],
   async headers() {
     return [
       {
         source: "/lexis.png",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
+        headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
       {
-        source: "/logo.svg",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
+        source: "/hero.jpg",
+        headers: [{ key: "Cache-Control", value: staticAssetCache }],
+      },
+      {
+        source: "/icon-:size.png",
+        headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
     ];
   },
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
@@ -42,7 +39,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: "/favicon.ico", destination: "/lexis.png", permanent: true },
+      { source: "/favicon.ico", destination: "/icon-48.png", permanent: true },
       { source: "/corporate-law", destination: "/company-law", permanent: true },
       { source: "/litigation", destination: "/civil-and-criminal-litigation", permanent: true },
       { source: "/intellectual-property", destination: "/intellectual-property-law", permanent: true },

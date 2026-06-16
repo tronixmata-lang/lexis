@@ -1,15 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BRAND } from "@/lib/constants";
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-[85vh] items-center bg-navy">
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-30"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80')",
-        }}
+      <Image
+        src="/hero.jpg"
+        alt=""
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        quality={75}
+        className="object-cover opacity-30"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70" />
 

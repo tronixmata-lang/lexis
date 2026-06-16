@@ -1,27 +1,29 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import LayoutShell from "@/components/LayoutShell";
 import OrganizationSchema from "@/components/OrganizationSchema";
-import { mergeSeoKeywords } from "@/lib/blog-seo";
-import { getBlogPosts } from "@/lib/data";
 import { createPageMetadata } from "@/lib/seo";
-import { getSiteSettings } from "@/sanity/lib/fetch";
+import { getLayoutSeo } from "@/lib/layout-seo";
 import { BRAND, SITE_TITLE } from "@/lib/constants";
 import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [settings, posts] = await Promise.all([getSiteSettings(), getBlogPosts()]);
+  const { settings, keywords } = await getLayoutSeo();
 
   return {
     ...createPageMetadata({
@@ -29,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: settings.defaultDescription,
       path: "/",
       image: settings.ogImage ?? DEFAULT_OG_IMAGE,
-      keywords: mergeSeoKeywords(settings.allKeywords, posts),
+      keywords,
     }),
     title: {
       default: settings.siteTitle || SITE_TITLE,
@@ -44,9 +46,12 @@ export async function generateMetadata(): Promise<Metadata> {
       follow: true,
     },
     icons: {
-      icon: [{ url: BRAND.logo, type: "image/png", sizes: "724x345" }],
-      apple: [{ url: BRAND.logo, type: "image/png" }],
-      shortcut: BRAND.logo,
+      icon: [
+        { url: "/icon-48.png", type: "image/png", sizes: "48x48" },
+        { url: BRAND.logo, type: "image/png", sizes: "724x345" },
+      ],
+      apple: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
+      shortcut: "/icon-48.png",
     },
   };
 }
@@ -59,7 +64,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen antialiased">
-        <OrganizationSchema />
+        <Suspense fallback={null}>
+          <OrganizationSchema />
+        </Suspense>
         <LayoutShell>{children}</LayoutShell>
       </body>
     </html>

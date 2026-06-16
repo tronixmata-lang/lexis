@@ -1,4 +1,5 @@
 import { unstable_cache } from "next/cache";
+import { cache } from "react";
 import { promises as fs } from "fs";
 import path from "path";
 import { isSanityConfigured } from "../../sanity/env";
@@ -71,13 +72,13 @@ const getCachedCaseStudies = unstable_cache(readCaseStudies, ["case-studies"], {
 });
 
 /** Cached — use on public pages. Prefers Sanity when configured. */
-export async function getBlogPosts(): Promise<BlogPost[]> {
+export const getBlogPosts = cache(async (): Promise<BlogPost[]> => {
   if (isSanityConfigured()) {
     const posts = await getSanityBlogPosts();
     if (posts.length > 0) return posts;
   }
   return getCachedBlogPosts();
-}
+});
 
 /** Uncached — use in admin API or JSON fallback */
 export async function getBlogPostsFresh(): Promise<BlogPost[]> {
@@ -119,9 +120,9 @@ export async function saveTestimonials(
   revalidateTestimonialsCache();
 }
 
-export async function getCaseStudies(): Promise<CaseStudy[]> {
+export const getCaseStudies = cache(async (): Promise<CaseStudy[]> => {
   return getCachedCaseStudies();
-}
+});
 
 export async function getCaseStudiesFresh(): Promise<CaseStudy[]> {
   return readCaseStudies();
