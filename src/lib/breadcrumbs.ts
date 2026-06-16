@@ -5,7 +5,7 @@ import type { BlogPost } from "./types";
 export const HOME_CRUMB: BreadcrumbItem = { name: "Home", path: "/" };
 
 export function homeTrail(): BreadcrumbItem[] {
-  return [HOME_CRUMB];
+  return [HOME_CRUMB, { name: "Index", path: "/" }];
 }
 
 export function aboutTrail(): BreadcrumbItem[] {
@@ -67,7 +67,7 @@ export function courtFeeCalculatorTrail(): BreadcrumbItem[] {
 
 /** Resolve breadcrumbs from URL pathname (fallback for client-side bar). */
 export function trailFromPathname(pathname: string): BreadcrumbItem[] {
-  if (!pathname || pathname === "/") return [];
+  if (!pathname || pathname === "/") return homeTrail();
 
   const staticMap: Record<string, BreadcrumbItem[]> = {
     "/about": aboutTrail(),

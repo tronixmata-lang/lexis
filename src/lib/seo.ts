@@ -3,7 +3,7 @@ import { BRAND } from "./constants";
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lexislegis.com";
 
-export const DEFAULT_OG_IMAGE = "/lexis.png";
+export const DEFAULT_OG_IMAGE = BRAND.logo;
 
 export function absoluteUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;

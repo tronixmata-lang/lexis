@@ -3,13 +3,11 @@ import { Suspense } from "react";
 import BlogCard from "@/components/BlogCard";
 import BlogEmptyState from "@/components/blog/BlogEmptyState";
 import BlogToolbar from "@/components/blog/BlogToolbar";
-import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import JsonLd from "@/components/JsonLd";
 import PageHeader from "@/components/PageHeader";
 import { getBlogPosts } from "@/lib/data";
 import { filterBlogPosts, getBlogCategories } from "@/lib/blog-filters";
 import { getBlogSeoKeywords, getBlogTitlesDescription } from "@/lib/blog-seo";
-import { blogCategoryTrail, blogTrail } from "@/lib/breadcrumbs";
 import { blogItemListSchema } from "@/lib/schema";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -44,7 +42,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const allPosts = await getBlogPosts();
   const categories = getBlogCategories(allPosts);
   const posts = filterBlogPosts(allPosts, { category, query: q });
-  const breadcrumbs = category ? blogCategoryTrail(category) : blogTrail();
   const trimmedQuery = q?.trim();
   const hasFilters = Boolean(category || trimmedQuery);
 
@@ -58,8 +55,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   return (
     <>
       <JsonLd data={blogItemListSchema(allPosts)} />
-      <SetBreadcrumbs items={breadcrumbs} />
-      <PageHeader title={title} subtitle={subtitle} breadcrumbItems={breadcrumbs} />
+      <PageHeader title={title} subtitle={subtitle} />
 
       <Suspense fallback={<BlogToolbarFallback />}>
         <BlogToolbar

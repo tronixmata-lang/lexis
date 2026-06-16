@@ -19,22 +19,27 @@ export default function PracticeAreaCard({
   index = 0,
 }: PracticeAreaCardProps) {
   const displayTitle = navLabel ?? title;
+
   return (
     <Link
       href={`/${slug}`}
-      className="card-hover group relative overflow-hidden rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:border-primary/20 hover:shadow-lg"
+      className="card-hover group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-md ring-1 ring-black/[0.04] transition-all hover:border-primary/30 hover:shadow-xl"
     >
-      <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-gold/5 transition-transform group-hover:scale-110" />
-      <span className="text-xs font-semibold text-gold/80">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <div className="relative mt-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 text-primary transition-all group-hover:from-primary group-hover:to-primary/80 group-hover:text-white">
-        <PracticeIcon name={icon} />
+      <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary via-primary/80 to-gold" />
+
+      <div className="relative flex items-start justify-between gap-4">
+        <div className="text-primary transition-colors group-hover:text-navy">
+          <PracticeIcon name={icon} />
+        </div>
+        <span className="font-serif text-2xl font-bold leading-none text-gold/50">
+          {String(index + 1).padStart(2, "0")}
+        </span>
       </div>
-      <h2 className="relative mt-5 text-lg font-semibold text-navy group-hover:text-primary">
+
+      <h2 className="relative mt-5 font-serif text-lg font-semibold text-navy group-hover:text-primary">
         {displayTitle}
       </h2>
-      <p className="relative mt-2 text-sm leading-relaxed text-gray-600 line-clamp-3">
+      <p className="relative mt-2 flex-1 text-sm leading-relaxed text-gray-600 line-clamp-3">
         {description}
       </p>
       <span className="relative mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary">

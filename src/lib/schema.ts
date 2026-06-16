@@ -30,8 +30,8 @@ export function organizationSchema(
     legalName: BRAND.legalName,
     alternateName: ["Lexislegis", "Lexis and Legis Law Associates"],
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/lexis.png"),
-    image: absoluteUrl("/lexis.png"),
+    logo: absoluteUrl(BRAND.logo),
+    image: absoluteUrl(BRAND.logo),
     description:
       "Best consulting and law firm in Nepal, Kathmandu (Anamnagar). Corporate law, litigation, divorce, family law, criminal defense, property law, and legal consultation.",
     knowsAbout: [
@@ -102,7 +102,7 @@ export function websiteSchema() {
       name: BRAND.name,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/lexis.png"),
+        url: absoluteUrl(BRAND.logo),
       },
     },
   };
@@ -135,7 +135,7 @@ export function articleSchema(post: BlogPost) {
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
-    image: post.image ? (post.image.startsWith("http") ? post.image : absoluteUrl(post.image)) : absoluteUrl("/lexis.png"),
+    image: post.image ? (post.image.startsWith("http") ? post.image : absoluteUrl(post.image)) : absoluteUrl(BRAND.logo),
     datePublished: post.publishedAt,
     inLanguage,
     author: {
@@ -147,7 +147,7 @@ export function articleSchema(post: BlogPost) {
       name: BRAND.name,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/lexis.png"),
+        url: absoluteUrl(BRAND.logo),
       },
     },
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),

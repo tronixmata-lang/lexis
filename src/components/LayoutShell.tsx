@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
 import BreadcrumbBar from "./BreadcrumbBar";
-import { BreadcrumbProvider } from "./BreadcrumbContext";
 
 export default function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -17,12 +16,12 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
   }
 
   return (
-    <BreadcrumbProvider>
+    <>
       <Navbar />
       <BreadcrumbBar />
       <main className="flex-1">{children}</main>
       <Footer />
       <WhatsAppButton />
-    </BreadcrumbProvider>
+    </>
   );
 }

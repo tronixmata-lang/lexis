@@ -32,7 +32,7 @@ export default function Breadcrumbs({
       {includeSchema && <JsonLd data={breadcrumbSchema(items)} />}
       <nav className={`${className} ${justify}`.trim()} aria-label="Breadcrumb">
         <ol
-          className={`inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm ${
+          className={`inline-flex flex-nowrap items-center gap-x-2 text-sm ${
             isLight ? "text-gray-500" : "text-gray-300"
           }`}
         >
@@ -56,7 +56,9 @@ export default function Breadcrumbs({
                 ) : (
                   <Link
                     href={item.path}
-                    className={`transition-colors ${isLight ? "hover:text-primary" : "hover:text-white"}`}
+                    className={`transition-colors ${
+                      isLight ? "hover:text-primary" : "text-gray-300 hover:text-gold"
+                    }`}
                   >
                     {item.name}
                   </Link>

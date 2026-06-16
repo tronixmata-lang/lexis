@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import BlogContent from "@/components/BlogContent";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import SetBreadcrumbs from "@/components/BreadcrumbContext";
-import { blogPostTrail } from "@/lib/breadcrumbs";
 import type { ContentBlock } from "@/lib/blog-content";
 import type { BlogPost } from "@/lib/types";
 
@@ -33,12 +30,10 @@ export default function BlogArticleLayout({
     month: "long",
     day: "numeric",
   });
-  const breadcrumbs = blogPostTrail(post);
   const illustration = isIllustration(post.image);
 
   return (
     <>
-      <SetBreadcrumbs items={breadcrumbs} />
       <section className="relative overflow-hidden bg-navy text-white">
         {post.image && (
           <>
@@ -55,11 +50,6 @@ export default function BlogArticleLayout({
           </>
         )}
         <div className="container-narrow relative z-10 px-4 py-14 sm:px-6 sm:py-20">
-          <Breadcrumbs
-            items={breadcrumbs}
-            className="mb-6"
-            includeSchema={false}
-          />
           <div className="mx-auto max-w-4xl text-center">
             <span className="inline-block rounded-full border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
               {post.category}
@@ -85,13 +75,6 @@ export default function BlogArticleLayout({
         <div className="container-narrow">
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,1fr)_240px]">
             <article className="min-w-0">
-              <Breadcrumbs
-                items={breadcrumbs}
-                variant="light"
-                includeSchema={false}
-                className="mb-6 justify-start"
-              />
-
               {post.image && (
                 <div className="relative mb-10 overflow-hidden rounded-2xl shadow-lg">
                   <div className="absolute inset-x-0 top-0 z-10 h-1 bg-gradient-to-r from-primary to-gold" />
@@ -178,12 +161,6 @@ export default function BlogArticleLayout({
               </div>
 
               <div className="mt-10 border-t border-gray-100 pt-8">
-                <Breadcrumbs
-                  items={breadcrumbs}
-                  variant="light"
-                  includeSchema={false}
-                  className="mb-6 justify-start"
-                />
                 <Link
                   href="/blog"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-navy"

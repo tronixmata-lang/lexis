@@ -7,6 +7,8 @@ import { mergeSeoKeywords } from "@/lib/blog-seo";
 import { getBlogPosts } from "@/lib/data";
 import { createPageMetadata } from "@/lib/seo";
 import { getSiteSettings } from "@/sanity/lib/fetch";
+import { BRAND, SITE_TITLE } from "@/lib/constants";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,12 +28,12 @@ export async function generateMetadata(): Promise<Metadata> {
       title: settings.siteTitle,
       description: settings.defaultDescription,
       path: "/",
-      image: settings.ogImage,
+      image: settings.ogImage ?? DEFAULT_OG_IMAGE,
       keywords: mergeSeoKeywords(settings.allKeywords, posts),
     }),
     title: {
-      default: settings.siteTitle,
-      template: "%s || Lexislegis",
+      default: settings.siteTitle || SITE_TITLE,
+      template: `%s | ${BRAND.name}`,
     },
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://lexislegis.com"),
     verification: settings.googleSiteVerification
@@ -42,12 +44,9 @@ export async function generateMetadata(): Promise<Metadata> {
       follow: true,
     },
     icons: {
-      icon: [
-        { url: "/icon.svg", type: "image/svg+xml" },
-        { url: "/lexis.png", type: "image/png" },
-      ],
-      apple: "/apple-icon.svg",
-      shortcut: "/lexis.png",
+      icon: [{ url: BRAND.logo, type: "image/png", sizes: "724x345" }],
+      apple: [{ url: BRAND.logo, type: "image/png" }],
+      shortcut: BRAND.logo,
     },
   };
 }

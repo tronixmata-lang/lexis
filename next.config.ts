@@ -42,6 +42,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: "/favicon.ico", destination: "/lexis.png", permanent: true },
       { source: "/corporate-law", destination: "/company-law", permanent: true },
       { source: "/litigation", destination: "/civil-and-criminal-litigation", permanent: true },
       { source: "/intellectual-property", destination: "/intellectual-property-law", permanent: true },

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
-import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import CourtFeeCalculator from "@/components/tools/CourtFeeCalculator";
 import {
   APPLICABLE_CASE_TYPES,
@@ -8,7 +7,6 @@ import {
   COURT_FEE_SLABS,
   FIXED_FEE_CASES,
 } from "@/lib/court-fees";
-import { courtFeeCalculatorTrail } from "@/lib/breadcrumbs";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -19,15 +17,11 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function CourtFeeCalculatorPage() {
-  const breadcrumbs = courtFeeCalculatorTrail();
-
   return (
     <>
-      <SetBreadcrumbs items={breadcrumbs} />
       <PageHeader
         title="Court Fee Calculator"
         subtitle="Professional tool for estimating court filing fees in Nepal"
-        breadcrumbItems={breadcrumbs}
       />
 
       <section className="border-b border-gray-100 bg-white py-12">

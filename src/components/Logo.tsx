@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BRAND } from "@/lib/constants";
 
 type LogoProps = {
   className?: string;
@@ -13,8 +14,8 @@ export default function Logo({ className = "", size = "default" }: LogoProps) {
   return (
     <Link href="/" className={`inline-flex items-center ${className}`}>
       <Image
-        src="/lexis.png"
-        alt="Lexis and Legis logo"
+        src={BRAND.logo}
+        alt={`${BRAND.name} logo`}
         width={220}
         height={66}
         priority

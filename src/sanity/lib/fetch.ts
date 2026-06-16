@@ -14,6 +14,7 @@ import {
 } from "./queries";
 import { CONTACT, SITE_TITLE } from "@/lib/constants";
 import { DEFAULT_SITE_DESCRIPTION, PRIMARY_SEO_KEYWORDS, SEO_KEYWORDS } from "@/lib/seo-keywords";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export type SiteSettings = {
   siteTitle: string;
@@ -85,7 +86,7 @@ async function fetchSiteSettingsFromSanity(): Promise<SiteSettings | null> {
     primaryKeywords,
     allKeywords: [...new Set([...SEO_KEYWORDS, ...primaryKeywords])],
     googleSiteVerification: doc.googleSiteVerification,
-    ogImage: resolveOgImage(doc.ogImage),
+    ogImage: resolveOgImage(doc.ogImage) ?? DEFAULT_OG_IMAGE,
   };
 }
 
@@ -156,6 +157,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
     primaryKeywords: [...PRIMARY_SEO_KEYWORDS],
     allKeywords: [...SEO_KEYWORDS],
     googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION,
+    ogImage: DEFAULT_OG_IMAGE,
   };
 }
 

@@ -22,6 +22,7 @@ export const BRAND = {
   name: "Lexis and Legis Law Associates",
   legalName: "Lexis and Legis Law Associates Pvt. Ltd.",
   tagline: "A Leading Law Firm Based in Kathmandu, Nepal",
+  logo: "/lexis.png",
   email: CONTACT.email,
   address: CONTACT.address,
   phones: CONTACT.phones,
@@ -38,7 +39,7 @@ export const BRAND = {
 } as const;
 
 /** Browser tab / SEO default site title */
-export const SITE_TITLE = "Lexislegis || Best Consulting and Law Firm in nepal";
+export const SITE_TITLE = "Lexis and Legis Law Associates | Best Law Firm in Nepal";
 
 export { PRACTICE_AREAS, PRACTICE_AREAS_INTRO } from "./services";
 

@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
-import SetBreadcrumbs from "@/components/BreadcrumbContext";
 import ContactInfoPanel from "@/components/contact/ContactInfoPanel";
 import { BRAND } from "@/lib/constants";
-import { contactTrail } from "@/lib/breadcrumbs";
 import { createPageMetadata } from "@/lib/seo";
 import { getContactPageContent } from "@/sanity/lib/fetch";
 
@@ -20,7 +17,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ContactPage() {
   const content = await getContactPageContent();
-  const breadcrumbs = contactTrail();
   const whatsappMessage = encodeURIComponent(
     "Hello, I would like to get in touch with Lexis and Legis Law Associates."
   );
@@ -28,12 +24,10 @@ export default async function ContactPage() {
 
   return (
     <>
-      <SetBreadcrumbs items={breadcrumbs} />
       <section className="relative overflow-hidden bg-navy py-20 text-white sm:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/40 via-navy to-navy" />
         <div className="container-narrow relative z-10 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <Breadcrumbs items={breadcrumbs} className="mb-6" includeSchema={false} />
             <p className="text-sm font-semibold uppercase tracking-widest text-gold">
               {content.heroEyebrow}
             </p>

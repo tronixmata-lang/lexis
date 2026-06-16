@@ -1,10 +1,7 @@
 import Link from "next/link";
-import Breadcrumbs from "./Breadcrumbs";
-import SetBreadcrumbs from "./BreadcrumbContext";
 import ContactForm from "./ContactForm";
 import PageHeader from "./PageHeader";
 import { BRAND } from "@/lib/constants";
-import { serviceTrail } from "@/lib/breadcrumbs";
 import type { FaqItem } from "@/lib/schema";
 
 import type { ServiceSubsection } from "@/lib/services";
@@ -33,25 +30,16 @@ export default function ServicePageLayout({
   faqItems,
 }: ServicePageLayoutProps) {
   const displayTitle = navLabel ?? title;
-  const breadcrumbs = serviceTrail(slug, displayTitle);
 
   return (
     <>
-      <SetBreadcrumbs items={breadcrumbs} />
       <PageHeader
         title={displayTitle}
         subtitle={subtitle}
-        breadcrumbItems={breadcrumbs}
       />
 
       <section className="section-padding bg-white">
         <div className="container-narrow">
-          <Breadcrumbs
-            items={breadcrumbs}
-            variant="light"
-            includeSchema={false}
-            className="mb-8 justify-start"
-          />
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <div className="rounded-xl border-l-4 border-gold bg-light-gray/50 p-6 sm:p-8">

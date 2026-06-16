@@ -5,7 +5,7 @@ import { DEFAULT_SITE_DESCRIPTION } from "@/lib/seo-keywords";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: BRAND.name,
-    short_name: "Lexislegis",
+    short_name: "Lexis & Legis",
     description: DEFAULT_SITE_DESCRIPTION,
     start_url: "/",
     display: "standalone",
@@ -13,13 +13,8 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#0F4FA8",
     icons: [
       {
-        src: "/icon.svg",
-        sizes: "any",
-        type: "image/svg+xml",
-      },
-      {
-        src: "/lexis.png",
-        sizes: "512x512",
+        src: BRAND.logo,
+        sizes: "724x345",
         type: "image/png",
       },
     ],
