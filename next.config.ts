@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
         source: "/practice-areas/:path*",
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
+      {
+        source: "/case-studies/:path*",
+        headers: [{ key: "Cache-Control", value: staticAssetCache }],
+      },
     ];
   },
   images: {
