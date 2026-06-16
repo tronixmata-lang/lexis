@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import { TEAM_MEMBERS } from "@/lib/constants";
-import { createPageMetadata } from "@/lib/seo";
+import { createNavPageMetadata } from "@/lib/nav-seo";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Our Legal Team",
-  description:
-    "Meet the experienced legal professionals at Lexis and Legis Law Associates, a leading law firm in Kathmandu, Nepal.",
-  path: "/team",
-});
+export const metadata: Metadata = createNavPageMetadata("/team");
 
 export default function TeamPage() {
   return (

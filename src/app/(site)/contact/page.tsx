@@ -2,16 +2,19 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import ContactInfoPanel from "@/components/contact/ContactInfoPanel";
 import { BRAND } from "@/lib/constants";
+import { getNavSeo } from "@/lib/nav-seo";
 import { createPageMetadata } from "@/lib/seo";
 import { getContactPageContent } from "@/sanity/lib/fetch";
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContactPageContent();
+  const nav = getNavSeo("/contact");
 
   return createPageMetadata({
     title: content.metaTitle,
     description: content.metaDescription,
     path: "/contact",
+    keywords: nav?.keywords,
   });
 }
 

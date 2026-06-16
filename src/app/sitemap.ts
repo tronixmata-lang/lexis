@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getBlogPosts } from "@/lib/data";
+import { NAV_SEO } from "@/lib/nav-seo";
 import { SERVICE_PAGES } from "@/lib/services";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lexislegis.com";
@@ -7,21 +8,11 @@ const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lexislegis.com";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getBlogPosts();
 
-  const staticPages = [
-    "",
-    "/about",
-    "/team",
-    "/contact",
-    "/consultation",
-    "/practice-areas",
-    "/case-studies",
-    "/blog",
-    "/court-fee-calculator",
-  ].map((path) => ({
-    url: `${BASE}${path}`,
+  const staticPages = NAV_SEO.map((item) => ({
+    url: `${BASE}${item.href}`,
     lastModified: new Date(),
-    changeFrequency: path === "" ? ("weekly" as const) : ("monthly" as const),
-    priority: path === "" ? 1 : 0.9,
+    changeFrequency: item.changeFrequency,
+    priority: item.sitemapPriority,
   }));
 
   const servicePages = Object.keys(SERVICE_PAGES).map((slug) => ({

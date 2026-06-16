@@ -13,7 +13,7 @@ export default function PracticeAreas() {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PRACTICE_AREAS.slice(0, 8).map((area, index) => (
+          {PRACTICE_AREAS.slice(0, 8).map((area) => (
             <PracticeAreaCard
               key={area.slug}
               slug={area.slug}
@@ -21,7 +21,6 @@ export default function PracticeAreas() {
               navLabel={area.navLabel}
               description={area.description}
               image={area.image}
-              index={index}
             />
           ))}
         </div>

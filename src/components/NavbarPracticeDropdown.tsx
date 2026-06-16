@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import { PracticeIcon } from "@/components/icons/PracticeIcons";
 import { AREA_ICONS, PRACTICE_AREA_ORDER } from "@/lib/area-icons";
+import { getNavSeo } from "@/lib/nav-seo";
 import { PRACTICE_NAV_LABELS } from "@/lib/practice-nav-labels";
 
 export default function NavbarPracticeDropdown() {
@@ -25,6 +26,7 @@ export default function NavbarPracticeDropdown() {
       <div className="flex items-center gap-2">
         <Link
           href="/practice-areas"
+          title={getNavSeo("/practice-areas")?.title}
           className="text-sm font-medium text-dark-text transition-colors hover:text-primary"
         >
           Practice Areas
@@ -62,6 +64,7 @@ export default function NavbarPracticeDropdown() {
               </div>
               <Link
                 href="/practice-areas"
+                title={getNavSeo("/practice-areas")?.title}
                 className="inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-navy"
                 onClick={() => setOpen(false)}
               >
@@ -75,6 +78,7 @@ export default function NavbarPracticeDropdown() {
                 <Link
                   key={slug}
                   href={`/${slug}`}
+                  title={`${PRACTICE_NAV_LABELS[slug]} in Nepal`}
                   className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-primary/5"
                   onClick={() => setOpen(false)}
                 >

@@ -28,6 +28,12 @@ export async function generateMetadata({
     title: `${displayTitle} in Nepal`,
     description: `${page.subtitle}. Expert legal services from Lexis and Legis Law Associates in Kathmandu, Nepal.`,
     path: `/${service}`,
+    keywords: [
+      `${displayTitle.toLowerCase()} nepal`,
+      `${displayTitle.toLowerCase()} kathmandu`,
+      "law firm in nepal",
+      "legal services nepal",
+    ],
   });
 }
 

@@ -4,14 +4,9 @@ import ContactForm from "@/components/ContactForm";
 import PageHeader from "@/components/PageHeader";
 import ScheduleOnlineFallback from "@/components/ScheduleOnlineFallback";
 import { getCalendlyUrl } from "@/lib/calendly";
-import { createPageMetadata } from "@/lib/seo";
+import { createNavPageMetadata } from "@/lib/nav-seo";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Book Legal Consultation",
-  description:
-    "Schedule a consultation with experienced attorneys at Lexis and Legis Law Associates in Kathmandu, Nepal. Corporate, civil, IP and litigation advice.",
-  path: "/consultation",
-});
+export const metadata: Metadata = createNavPageMetadata("/consultation");
 
 export default function ConsultationPage() {
   const calendlyUrl = getCalendlyUrl();

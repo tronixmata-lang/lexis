@@ -9,18 +9,20 @@ import { getBlogPosts } from "@/lib/data";
 import { filterBlogPosts, getBlogCategories } from "@/lib/blog-filters";
 import { getBlogSeoKeywords, getBlogTitlesDescription } from "@/lib/blog-seo";
 import { blogItemListSchema } from "@/lib/schema";
+import { getNavSeo } from "@/lib/nav-seo";
 import { createPageMetadata } from "@/lib/seo";
 
 export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   const posts = await getBlogPosts();
+  const nav = getNavSeo("/blog");
 
   return createPageMetadata({
-    title: "Legal News and Articles",
+    title: nav?.title ?? "Legal News and Articles",
     description: getBlogTitlesDescription(posts),
     path: "/blog",
-    keywords: getBlogSeoKeywords(posts),
+    keywords: [...(nav?.keywords ?? []), ...getBlogSeoKeywords(posts)],
   });
 }
 

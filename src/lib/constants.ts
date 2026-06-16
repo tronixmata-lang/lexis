@@ -96,16 +96,6 @@ export const WHY_CHOOSE = [
   },
 ] as const;
 
-export const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/practice-areas", label: "Practice Areas" },
-  { href: "/about", label: "About" },
-  { href: "/team", label: "Teams" },
-  { href: "/blog", label: "News & Events" },
-  { href: "/court-fee-calculator", label: "Court Fee" },
-  { href: "/contact", label: "Contact" },
-] as const;
-
 export const TEAM_MEMBERS = [
   {
     name: "Gobinda Prasad Sigdel",

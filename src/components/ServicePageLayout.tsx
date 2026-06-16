@@ -33,10 +33,7 @@ export default function ServicePageLayout({
 
   return (
     <>
-      <PageHeader
-        title={displayTitle}
-        subtitle={subtitle}
-      />
+      <PageHeader title={displayTitle} subtitle={subtitle} />
 
       <section className="section-padding bg-white">
         <div className="container-narrow">

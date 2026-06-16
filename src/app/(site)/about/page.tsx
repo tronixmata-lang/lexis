@@ -3,14 +3,9 @@ import Link from "next/link";
 import CoreValuesSection from "@/components/about/CoreValuesSection";
 import PageHeader from "@/components/PageHeader";
 import { BRAND, CONTACT, TRUST_STATS, WHY_CHOOSE } from "@/lib/constants";
-import { createPageMetadata } from "@/lib/seo";
+import { createNavPageMetadata } from "@/lib/nav-seo";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "About Us",
-  description:
-    "Lexis and Legis Law Associates, a leading law firm in Kathmandu, Nepal offering commercial, civil, IP, litigation and arbitration services.",
-  path: "/about",
-});
+export const metadata: Metadata = createNavPageMetadata("/about");
 
 const EXPERTISE = [
   {
@@ -32,10 +27,7 @@ const EXPERTISE = [
 export default function AboutPage() {
   return (
     <>
-      <PageHeader
-        title="About Us"
-        subtitle={BRAND.tagline}
-      />
+      <PageHeader title="About Us" subtitle={BRAND.tagline} />
 
       {/* Stats strip */}
       <section className="border-b border-gray-100 bg-white py-12">
@@ -143,15 +135,12 @@ export default function AboutPage() {
             </h2>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {WHY_CHOOSE.map((item, index) => (
+            {WHY_CHOOSE.map((item) => (
               <div
                 key={item.title}
                 className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
               >
-                <span className="font-serif text-3xl font-bold text-gold/40">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-2 text-lg font-semibold text-navy">{item.title}</h3>
+                <h3 className="text-lg font-semibold text-navy">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.description}</p>
               </div>
             ))}

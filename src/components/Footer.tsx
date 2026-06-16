@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { BRAND, CONTACT, NAV_LINKS, PRACTICE_AREAS } from "@/lib/constants";
+import { BRAND, CONTACT, PRACTICE_AREAS } from "@/lib/constants";
+import { getNavSeo, NAV_LINKS } from "@/lib/nav-seo";
 
 export default function Footer() {
   return (
@@ -29,7 +30,11 @@ export default function Footer() {
               <ul className="space-y-2">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-gray-300 transition-colors hover:text-gold">
+                    <Link
+                      href={link.href}
+                      title={getNavSeo(link.href)?.title}
+                      className="text-sm text-gray-300 transition-colors hover:text-gold"
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -44,6 +49,7 @@ export default function Footer() {
                   <li key={area.slug}>
                     <Link
                       href={`/${area.slug}`}
+                      title={`${area.navLabel ?? area.title} in Nepal`}
                       className="text-sm text-gray-300 transition-colors hover:text-gold"
                     >
                       {area.navLabel ?? area.title}
@@ -84,7 +90,7 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
-              <Link href="/consultation" className="btn-gold mt-6 inline-block text-sm">
+              <Link href="/consultation" title={getNavSeo("/consultation")?.title} className="btn-gold mt-6 inline-block text-sm">
                 Book Consultation
               </Link>
             </div>

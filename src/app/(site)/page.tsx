@@ -7,17 +7,11 @@ import AboutPreview from "@/components/home/AboutPreview";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import HomeDeferredSections from "@/components/home/HomeDeferredSections";
 import HomeSectionSkeleton from "@/components/home/HomeSectionSkeleton";
-import { SITE_TITLE } from "@/lib/constants";
-import { createPageMetadata } from "@/lib/seo";
-import { DEFAULT_SITE_DESCRIPTION } from "@/lib/seo-keywords";
+import { createNavPageMetadata } from "@/lib/nav-seo";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = createPageMetadata({
-  title: SITE_TITLE,
-  description: DEFAULT_SITE_DESCRIPTION,
-  path: "/",
-});
+export const metadata: Metadata = createNavPageMetadata("/");
 
 export default function HomePage() {
   return (

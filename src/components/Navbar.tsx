@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
 import NavbarPracticeDropdown from "./NavbarPracticeDropdown";
-import { NAV_LINKS } from "@/lib/constants";
+import { getNavSeo, NAV_LINKS } from "@/lib/nav-seo";
 import { AREA_ICONS, PRACTICE_AREA_ORDER } from "@/lib/area-icons";
 import { PracticeIcon } from "@/components/icons/PracticeIcons";
 import { PRACTICE_NAV_LABELS } from "@/lib/practice-nav-labels";
@@ -76,6 +76,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/"
+              title={getNavSeo("/")?.title}
               className="text-sm font-medium text-dark-text transition-colors hover:text-primary"
             >
               Home
@@ -86,6 +87,7 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                title={getNavSeo(link.href)?.title}
                 className="text-sm font-medium text-dark-text transition-colors hover:text-primary"
               >
                 {link.label}
@@ -95,7 +97,7 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <Link href="/consultation" className="btn-gold text-sm">
+          <Link href="/consultation" title={getNavSeo("/consultation")?.title} className="btn-gold text-sm">
             Book Consultation
           </Link>
         </div>
@@ -122,6 +124,7 @@ export default function Navbar() {
             <li className="w-full max-w-xs">
               <Link
                 href="/"
+                title={getNavSeo("/")?.title}
                 className="block py-2 text-center text-sm font-medium text-dark-text"
                 onClick={() => setOpen(false)}
               >
@@ -150,6 +153,7 @@ export default function Navbar() {
                     <li key={slug}>
                       <Link
                         href={`/${slug}`}
+                        title={`${PRACTICE_NAV_LABELS[slug]} in Nepal`}
                         className="flex items-center justify-center gap-2 rounded-lg px-2 py-2 text-sm font-medium text-navy transition-colors hover:bg-primary/5 hover:text-primary"
                         onClick={() => setOpen(false)}
                       >
@@ -176,6 +180,7 @@ export default function Navbar() {
               <li key={link.href} className="w-full max-w-xs">
                 <Link
                   href={link.href}
+                  title={getNavSeo(link.href)?.title}
                   className="block py-2 text-center text-sm font-medium text-dark-text"
                   onClick={() => setOpen(false)}
                 >

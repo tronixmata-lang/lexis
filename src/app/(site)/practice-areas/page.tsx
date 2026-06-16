@@ -3,14 +3,9 @@ import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import PracticeAreaCard from "@/components/practice/PracticeAreaCard";
 import { PRACTICE_AREAS, PRACTICE_AREAS_INTRO } from "@/lib/constants";
-import { createPageMetadata } from "@/lib/seo";
+import { createNavPageMetadata } from "@/lib/nav-seo";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "18 Practice Areas",
-  description:
-    "Explore litigation, foreign investment, banking, aviation, IP, tax, company law and more. Trusted legal advisors in Kathmandu, Nepal.",
-  path: "/practice-areas",
-});
+export const metadata: Metadata = createNavPageMetadata("/practice-areas");
 
 export default function PracticeAreasPage() {
   return (
@@ -32,7 +27,7 @@ export default function PracticeAreasPage() {
       <section className="section-padding bg-light-gray">
         <div className="container-narrow">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PRACTICE_AREAS.map((area, index) => (
+            {PRACTICE_AREAS.map((area) => (
               <PracticeAreaCard
                 key={area.slug}
                 slug={area.slug}
@@ -40,7 +35,6 @@ export default function PracticeAreasPage() {
                 navLabel={area.navLabel}
                 description={area.description}
                 image={area.image}
-                index={index}
               />
             ))}
           </div>

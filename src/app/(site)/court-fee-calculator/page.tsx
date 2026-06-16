@@ -7,14 +7,9 @@ import {
   COURT_FEE_SLABS,
   FIXED_FEE_CASES,
 } from "@/lib/court-fees";
-import { createPageMetadata } from "@/lib/seo";
+import { createNavPageMetadata } from "@/lib/nav-seo";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Court Fee Calculator",
-  description:
-    "Calculate court filing fees for civil cases in Nepal. Slab-wise breakdown, legal basis, and applicable case types.",
-  path: "/court-fee-calculator",
-});
+export const metadata: Metadata = createNavPageMetadata("/court-fee-calculator");
 
 export default function CourtFeeCalculatorPage() {
   return (

@@ -7,7 +7,6 @@ interface PracticeAreaCardProps {
   navLabel?: string;
   description: string;
   image: string;
-  index?: number;
 }
 
 export default function PracticeAreaCard({
@@ -16,7 +15,6 @@ export default function PracticeAreaCard({
   navLabel,
   description,
   image,
-  index = 0,
 }: PracticeAreaCardProps) {
   const displayTitle = navLabel ?? title;
 
@@ -36,12 +34,6 @@ export default function PracticeAreaCard({
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
-        <span
-          className="absolute right-3 top-3 rounded-md bg-white/90 px-2 py-1 font-serif text-lg font-bold leading-none text-navy/70 backdrop-blur-sm"
-          aria-hidden="true"
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
       </div>
 
       <div className="relative flex flex-1 flex-col p-5 sm:p-6">
