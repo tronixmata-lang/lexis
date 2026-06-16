@@ -235,6 +235,11 @@ h6 {
   color: #757575;
 }
 
+.below-fold-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
 .section-padding {
   @apply px-4 py-16 sm:px-6 lg:px-8 lg:py-24;
 }

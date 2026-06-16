@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import type { GoogleReview, GoogleReviewsData } from "@/lib/google-reviews";
 
 function Stars({ rating }: { rating: number }) {
@@ -57,28 +57,22 @@ function ReviewCard({ review }: { review: GoogleReview }) {
   );
 }
 
+const MARQUEE_REVIEW_LIMIT = 8;
+
 export default function Testimonials({ initialData }: { initialData: GoogleReviewsData }) {
-  const [data, setData] = useState(initialData);
-
-  useEffect(() => {
-    if (initialData.reviews.length > 0) return;
-    fetch("/api/google-reviews")
-      .then((res) => res.json())
-      .then((fetched: GoogleReviewsData) => {
-        if (fetched.reviews?.length) setData(fetched);
-      })
-      .catch(() => undefined);
-  }, [initialData.reviews.length]);
-
-  const { reviews, rating, totalReviews, mapsUrl } = data;
+  const { reviews, rating, totalReviews, mapsUrl } = initialData;
   const hasReviews = reviews.length > 0;
-
-  const loop = useMemo(
-    () => (hasReviews ? [...reviews, ...reviews] : []),
-    [hasReviews, reviews]
+  const marqueeReviews = useMemo(
+    () => reviews.slice(0, MARQUEE_REVIEW_LIMIT),
+    [reviews]
   );
 
-  const duration = Math.min(Math.max(reviews.length * 2.5, 60), 150);
+  const loop = useMemo(
+    () => (hasReviews ? [...marqueeReviews, ...marqueeReviews] : []),
+    [hasReviews, marqueeReviews]
+  );
+
+  const duration = Math.min(Math.max(marqueeReviews.length * 2.5, 60), 150);
 
   return (
     <section id="testimonials" className="section-padding overflow-hidden bg-light-gray">

@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
         source: "/icon-:size.png",
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
+      {
+        source: "/practice-areas/:path*",
+        headers: [{ key: "Cache-Control", value: staticAssetCache }],
+      },
     ];
   },
   images: {

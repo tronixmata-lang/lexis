@@ -18,23 +18,42 @@ export default function Navbar() {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    if (!desktop.matches) {
+      return;
+    }
+
+    let ticking = false;
+    let visibleState = true;
+
     const onScroll = () => {
-      const currentScrollY = window.scrollY;
-      const delta = currentScrollY - lastScrollY.current;
+      if (ticking) return;
+      ticking = true;
 
-      if (Math.abs(delta) < 8) {
-        return;
-      }
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY.current;
 
-      if (currentScrollY <= 0) {
-        setVisible(true);
-      } else if (delta > 0) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
+        if (Math.abs(delta) >= 8) {
+          let nextVisible = visibleState;
+          if (currentScrollY <= 0) {
+            nextVisible = true;
+          } else if (delta > 0) {
+            nextVisible = false;
+          } else {
+            nextVisible = true;
+          }
 
-      lastScrollY.current = currentScrollY;
+          if (nextVisible !== visibleState) {
+            visibleState = nextVisible;
+            setVisible(nextVisible);
+          }
+
+          lastScrollY.current = currentScrollY;
+        }
+
+        ticking = false;
+      });
     };
 
     lastScrollY.current = window.scrollY;
@@ -50,7 +69,7 @@ export default function Navbar() {
         showNavbar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className="container-narrow flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <nav className="container-narrow flex items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5 lg:px-8">
         <Logo />
 
         <ul className="hidden items-center gap-8 lg:flex">

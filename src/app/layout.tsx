@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import LayoutShell from "@/components/LayoutShell";
 import OrganizationSchema from "@/components/OrganizationSchema";
 import { createPageMetadata } from "@/lib/seo";
 import { getLayoutSeo } from "@/lib/layout-seo";
@@ -13,6 +12,7 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  adjustFontFallback: true,
 });
 
 const playfair = Playfair_Display({
@@ -63,11 +63,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              ".hero-lcp-title{color:#fff;font-weight:700;line-height:1.1;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}",
+          }}
+        />
+      </head>
       <body className="min-h-screen antialiased">
         <Suspense fallback={null}>
           <OrganizationSchema />
         </Suspense>
-        <LayoutShell>{children}</LayoutShell>
+        {children}
       </body>
     </html>
   );

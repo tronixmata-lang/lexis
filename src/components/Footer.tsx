@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="container-narrow section-padding">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div className="max-w-sm">
-              <Logo />
+              <Logo size="footer" />
               <div className="mt-6 border-l-2 border-gold pl-4">
                 <p className="font-serif text-lg font-bold leading-snug text-white">
                   {BRAND.legalName}

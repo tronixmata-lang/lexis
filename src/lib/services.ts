@@ -1,4 +1,5 @@
 import { AREA_ICONS, PRACTICE_AREA_ORDER, PRACTICE_AREAS_INTRO } from "./area-icons";
+import { AREA_IMAGES } from "./area-images";
 
 export type ServiceSubsection = { title: string; items: string[] };
 
@@ -411,4 +412,5 @@ export const PRACTICE_AREAS = PRACTICE_AREA_ORDER.map((slug) => ({
   navLabel: SERVICE_PAGES[slug].navLabel,
   description: SERVICE_PAGES[slug].subtitle,
   icon: AREA_ICONS[slug] ?? "document",
+  image: AREA_IMAGES[slug] ?? "/practice-areas/civil-and-criminal-litigation.jpg",
 }));

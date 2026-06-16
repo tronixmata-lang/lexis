@@ -39,7 +39,7 @@ export default function PracticeAreasPage() {
                 title={area.title}
                 navLabel={area.navLabel}
                 description={area.description}
-                icon={area.icon}
+                image={area.image}
                 index={index}
               />
             ))}

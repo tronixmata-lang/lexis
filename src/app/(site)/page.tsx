@@ -24,9 +24,11 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustIndicators />
-      <PracticeAreas />
-      <AboutPreview />
-      <WhyChooseUs />
+      <div className="below-fold-section">
+        <PracticeAreas />
+        <AboutPreview />
+        <WhyChooseUs />
+      </div>
       <Suspense fallback={<HomeSectionSkeleton />}>
         <HomeDeferredSections />
       </Suspense>
