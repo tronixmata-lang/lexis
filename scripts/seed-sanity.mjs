@@ -44,7 +44,7 @@ const CONTACT = {
   days: "Sunday - Friday",
   phones: [
     { display: "+977 15922904", tel: "+97715922904" },
-    { display: "9856044154", tel: "+9779856044154" },
+    { display: "+977 9856044154", tel: "+9779856044154" },
   ],
 };
 
