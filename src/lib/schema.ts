@@ -12,10 +12,11 @@ type ReviewRating = {
 
 function socialProfiles(): string[] {
   const profiles: string[] = [BRAND.social.whatsapp, BRAND.website];
+  if (BRAND.social.linkedin) profiles.push(BRAND.social.linkedin);
   const facebook = process.env.NEXT_PUBLIC_FACEBOOK_URL?.trim();
   const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL?.trim();
   if (facebook) profiles.push(facebook);
-  if (linkedin) profiles.push(linkedin);
+  if (linkedin && !BRAND.social.linkedin) profiles.push(linkedin);
   return profiles;
 }
 

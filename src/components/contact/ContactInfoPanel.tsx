@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SocialLinks from "@/components/SocialLinks";
 import { BRAND, CONTACT } from "@/lib/constants";
 import type { ContactPageContent } from "@/sanity/lib/fetch";
 
@@ -61,6 +62,7 @@ export default function ContactInfoPanel({ content }: ContactInfoPanelProps) {
         >
           WhatsApp Chat
         </a>
+        <SocialLinks variant="panel" />
         <Link href="/consultation" className="btn-gold text-sm">
           Book Consultation
         </Link>

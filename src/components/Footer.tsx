@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import SocialLinks from "./SocialLinks";
 import { BRAND, CONTACT, PRACTICE_AREAS } from "@/lib/constants";
 import { getNavSeo, NAV_LINKS } from "@/lib/nav-seo";
 
@@ -23,6 +24,7 @@ export default function Footer() {
               <p className="mt-3 text-sm text-gray-300">
                 <span className="font-semibold text-white">{CONTACT.address}</span>
               </p>
+              <SocialLinks />
             </div>
 
             <div>

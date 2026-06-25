@@ -35,6 +35,7 @@ export const BRAND = {
   website: "https://lexislegis.com",
   social: {
     whatsapp: "https://wa.me/9779856044154",
+    linkedin: "https://www.linkedin.com/in/lexis-and-legis-law-associates-b07138419",
   },
 } as const;
 
